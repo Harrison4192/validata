@@ -1,0 +1,26 @@
+Package: dataValidation
+Title: Validation For Data Frames
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Harrison",
+           family = "Tietze",
+           role = c("aut", "cre"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Functions for validating the structure and properties of data frames.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    dplyr,
+    stringr,
+    janitor,
+    rlang,
+    dlookr,
+    tidyselect,
+    purrr,
+    magrittr,
+    tidyr,
+    tibble

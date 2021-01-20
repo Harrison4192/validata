@@ -1,0 +1,13 @@
+reference:
+- title: "Pairwise Validation"
+  desc: >
+    Pairwise validation of columns
+- contents:
+  - starts_with("confirm")
+- title: "Dataframe Validation"
+  desc: "iterative application of pairwise validations to entire data frame"
+- contents:
+  - starts_with("determine")
+- title: "Other Functions"
+- contents:
+  - drop_useless_cols
