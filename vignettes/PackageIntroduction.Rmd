@@ -1,0 +1,73 @@
+---
+title: "PackageIntroduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{PackageIntroduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(dataValidation)
+library(tidyselect)
+```
+
+## Confirm Distinct
+
+In data analysis tasks we often have data sets with multiple possible ID columns, but it's not always clear which combination uniquely identifies each row.
+
+sample_data1 has 3 ID type columns and 3 value columns.
+
+```{r}
+DT::datatable(sample_data1)
+```
+Let's use `confirm_distinct` iteratively to find the uniquely identifying columns of sample_data1.
+
+```{r}
+sample_data1 %>% 
+  confirm_distinct(ID_COL1)
+```
+
+```{r}
+sample_data1 %>% 
+  confirm_distinct(ID_COL1, ID_COL2)
+```
+
+```{r}
+sample_data1 %>% 
+  confirm_distinct(ID_COL1, ID_COL2, ID_COL3)
+```
+
+Here we can conclude that the combination of 3 ID columns is the primary key for the data.
+
+## Determine Distinct
+
+These steps can be automated with the wrapper function `determine distinct`. 
+
+```{r}
+sample_data1 %>% 
+  determine_distinct(matches("ID"))
+```
+
+## Confirm Mapping
+
+```{r}
+sample_data1 %>% 
+  confirm_mapping(ID_COL1, ID_COL2, view = F)
+```
+
+## Determine Mapping
+
+```{r}
+sample_data1 %>% 
+  determine_mapping(everything())
+```
+
+

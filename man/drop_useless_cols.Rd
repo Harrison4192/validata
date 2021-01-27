@@ -18,3 +18,4 @@ Removes columns that are all NA or contain only 1 value.
 \examples{
 iris \%>\% drop_useless_cols
 }
+\keyword{internal}

@@ -4,10 +4,12 @@
 \alias{determine_mapping}
 \title{Determine pairwise structural mappings}
 \usage{
-determine_mapping(df)
+determine_mapping(df, ...)
 }
 \arguments{
 \item{df}{a data frame}
+
+\item{...}{columns or a tidyselect specification}
 }
 \value{
 description of mappings
@@ -16,5 +18,5 @@ description of mappings
 Determine pairwise structural mappings
 }
 \examples{
-iris \%>\% determine_mapping
+iris \%>\% determine_mapping(everything())
 }

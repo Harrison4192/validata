@@ -23,4 +23,13 @@ Imports:
     purrr,
     magrittr,
     tidyr,
-    tibble
+    tibble,
+    DT,
+    gtools,
+    listviewer
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)

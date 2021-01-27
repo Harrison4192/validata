@@ -1,3 +1,11 @@
+#' n_dupes
+#'
+#' @param x a df
+#'
+#' @return an integer; number of dupe rows
+#' @keywords internal
+#' @export
+#'
 n_dupes <- function(x){(x %>% nrow) - (dplyr::distinct(x) %>% nrow) -> dupes ;dupes}
 
 
@@ -5,11 +13,12 @@ n_dupes <- function(x){(x %>% nrow) - (dplyr::distinct(x) %>% nrow) -> dupes ;du
 #' Confirm Distinct
 #'
 #' Confirm whether the rows of a data frame can be uniquely identified by the keys in the selected columns.
+#' Also reports whether the dataframe has duplicates. If so, it is best to remove duplicates and re-run the function.
 #'
 #' @param .data A dataframe
 #' @param ... (ID) columns
 #'
-#' @return a Logical value with description printed to console
+#' @return a Logical value invisibly with description printed to console
 #' @export
 #'
 #' @examples iris %>% confirm_distinct(Species, Sepal.Width)
@@ -21,7 +30,7 @@ confirm_distinct <- function(.data, ...) {
 
   .data1 %>% names %>% rlang::syms(.) -> cols
 
-  n_dupes(.data) -> d_rows
+  dataValidation::n_dupes(.data) -> d_rows
 
   if(d_rows > 0) {
     print(stringr::str_glue("database has {d_rows} duplicate rows"))

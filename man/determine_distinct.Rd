@@ -4,17 +4,26 @@
 \alias{determine_distinct}
 \title{Automatically determine primary key}
 \usage{
-determine_distinct(.data)
+determine_distinct(df, ...)
 }
 \arguments{
-\item{.data}{a data frame}
+\item{df}{a data frame}
+
+\item{...}{columns or a tidyselect specification}
 }
 \value{
 none
 }
 \description{
-Uses \code{confirm_distinct} in an iterative fashion to determine the primary key.
+Uses \code{confirm_distinct} in an iterative fashion to determine the primary keys.
+}
+\details{
+The goal of this function is to automatically determine which columns uniquely identify the rows of a dataframe.
+The output is a printed description of the combination of columns that form unique identifiers at each level.
+At level 1, the function tests if individual columns are primary keys
+At level 2, the function tests n C 2 combinations of columns to see if they form primary keys.
+The final level is testing all columns at once.
 }
 \examples{
-iris \%>\% determine_distinct
+iris \%>\% determine_distinct(everything())
 }

@@ -5,6 +5,7 @@
 #' @param .data a data frame
 #'
 #' @return invisibly returns data frame
+#' @keywords internal
 #' @export
 #'
 #' @examples iris %>% drop_useless_cols
