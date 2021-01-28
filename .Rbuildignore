@@ -5,3 +5,4 @@
 ^/Users/Harrison/Desktop/packages/dataValidation/_pkgdown\.yml$
 ^\.github$
 ^README\.Rmd$
+^build_package\.R$

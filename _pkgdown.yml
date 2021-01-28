@@ -1,9 +1,16 @@
 template:
   params:
     bootswatch: cerulean
+    ganalytics: G-9HK7JYZS3T
+
 
 development:
   mode: auto
+
+home:
+  title: Data Validation
+  description:  Functions to validate the properties of your data frames. Determine the primary keys and the mapping between columns.
+
 
 reference:
 - title: CONFIRM relationships for individual columns

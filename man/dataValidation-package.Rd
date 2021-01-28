@@ -8,8 +8,17 @@
 \description{
 Functions for validating the structure and properties of data frames.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://harrison4192.github.io/dataValidation}
+  \item \url{https://github.com/Harrison4192/dataValidation}
+  \item Report bugs at \url{https://github.com/Harrison4192/dataValidation/issues}
+}
+
+}
 \author{
-\strong{Maintainer}: Harrison Tietze \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Harrison Tietze \email{Harrison4192@gmail.com}
 
 }
 \keyword{internal}

@@ -5,8 +5,7 @@ Authors@R:
     person(given = "Harrison",
            family = "Tietze",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "Harrison4192@gmail.com")
 Description: Functions for validating the structure and properties of data frames.
 License: MIT + file LICENSE
 URL: https://harrison4192.github.io/dataValidation, https://github.com/Harrison4192/dataValidation
