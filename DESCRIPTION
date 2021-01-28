@@ -9,6 +9,8 @@ Authors@R:
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: Functions for validating the structure and properties of data frames.
 License: MIT + file LICENSE
+URL: https://harrison4192.github.io/dataCleaner
+BugReports: https://harrison4192.github.io/dataCleaner/issues 
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
