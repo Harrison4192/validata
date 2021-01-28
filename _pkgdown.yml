@@ -5,14 +5,40 @@ template:
 development:
   mode: auto
 
-
 reference:
-- title: "Pairwise Validation"
-  desc: >
-    Pairwise validation of columns
-- contents:
-  - starts_with("confirm")
-- title: "Dataframe Validation"
-  desc: "iterative application of pairwise validations to entire data frame"
-- contents:
-  - starts_with("determine")
+- title: CONFIRM relationships for individual columns
+  contents:
+  - '`confirm_distinct`'
+  - '`confirm_mapping`'
+  - '`confirm_overlap`'
+- title: DETERMINE relationships automatically
+  contents:
+  - '`determine_distinct`'
+  - '`determine_mapping`'
+articles:
+- title: All vignettes
+  desc: null
+  contents: '`PackageIntroduction`'
+navbar:
+  structure:
+    left:
+    - home
+    - intro
+    - reference
+    - articles
+    - tutorials
+    - news
+    right: github
+  components:
+    home:
+      icon: fas fa-home fa-lg
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    articles:
+      text: Articles
+      menu:
+      - text: PackageIntroduction
+        href: articles/PackageIntroduction.html
+

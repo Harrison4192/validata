@@ -1,11 +1,5 @@
-^dataValidation\.Rproj$
-^\.Rproj\.user$
-^LICENSE\.md$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-^doc$
-^Meta$
-^data-raw$
-^\.github$
-^\.travis\.yml$
+^LICENSE\.md$
+^/Users/Harrison/Desktop/packages/dataValidation/_pkgdown\.yml$
