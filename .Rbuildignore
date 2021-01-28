@@ -3,3 +3,5 @@
 ^pkgdown$
 ^LICENSE\.md$
 ^/Users/Harrison/Desktop/packages/dataValidation/_pkgdown\.yml$
+^\.github$
+^README\.Rmd$
