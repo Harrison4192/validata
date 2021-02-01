@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sample Data — sample_data1 • dataValidation</title>
+<title>Confirm structural mapping between 2 columns — confirm_cardinality • dataValidation</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Sample Data — sample_data1" />
-<meta property="og:description" content="Sample Data" />
+<meta property="og:title" content="Confirm structural mapping between 2 columns — confirm_cardinality" />
+<meta property="og:description" content="The mapping between elements of 2 columns can have 4 different relationships: one - one, one - many, many - one, many - many.
+This function returns a view of the mappings by row, and prints a summary to the console." />
 
 
 
@@ -133,26 +134,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sample Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/dataValidation/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>sample_data1.Rd</code></div>
+    <h1>Confirm structural mapping between 2 columns</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/dataValidation/blob/master/R/confirm_cardinality.R'><code>R/confirm_cardinality.R</code></a></small>
+    <div class="hidden name"><code>confirm_cardinality.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Sample Data</p>
+    <p>The mapping between elements of 2 columns can have 4 different relationships: one - one, one - many, many - one, many - many.
+This function returns a view of the mappings by row, and prints a summary to the console.</p>
     </div>
 
-    <pre class="usage"><span class='va'>sample_data1</span></pre>
+    <pre class="usage"><span class='fu'>confirm_cardinality</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>col1</span>, <span class='va'>col2</span>, view <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>.data</th>
+      <td><p>a data frame</p></td>
+    </tr>
+    <tr>
+      <th>col1</th>
+      <td><p>column 1</p></td>
+    </tr>
+    <tr>
+      <th>col2</th>
+      <td><p>column 2</p></td>
+    </tr>
+    <tr>
+      <th>view</th>
+      <td><p>View results?</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>6 columns. 3 id and 3 values</p><dl>
-<dt>ID_COL1</dt><dd><p>4-5 distinct codes</p></dd>
+    <p>A view of mappings. Also returns the view as a data frame invisibly.</p>
 
-</dl>
-
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>iris</span> <span class='op'>%&gt;%</span> <span class='fu'>confirm_cardinality</span><span class='op'>(</span><span class='va'>Species</span>, <span class='va'>Sepal.Width</span>, view <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; many - many mapping between Species and Sepal.Width</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
