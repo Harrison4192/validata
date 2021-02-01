@@ -41,6 +41,9 @@ usethis::use_package("rlang")
 usethis::use_package("lubridate")
 
 usethis::use_package("badger", type = "Suggests")
+usethis::use_package("testit", type = "Suggests")
+usethis::use_package("lemon", type = "Suggests")
+
 
 
 
@@ -72,7 +75,6 @@ use_github_actions_badge()
 
 # gh_token_help()
 create_github_token()
-# eb3fbffde700c116d673202ae02349d48e45e08d
 gitcreds_set()
 gitcreds_get()
 set_github_pat()
@@ -106,4 +108,4 @@ preview_site()
 load_all()
 
 determine_overlap(iris, everything())
-
+build_vignettes()

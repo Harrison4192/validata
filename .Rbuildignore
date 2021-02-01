@@ -10,3 +10,4 @@
 ^Meta$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
