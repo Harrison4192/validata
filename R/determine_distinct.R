@@ -60,8 +60,6 @@ make_distincts <- function(df, ...){
 #'
 #' @return none
 #' @export
-#'
-#' @examples iris %>% determine_distinct(everything())
 determine_distinct <- function(df, ...){
 
 
@@ -90,8 +88,6 @@ utils::capture.output(
       append(new_list) -> new_list
 
   }
-
-  print("Data frame is distinct by keys on these levels: ")
 
   new_list %>%
     purrr::map(~if(rlang::is_empty(.)) {. <- 'no primary keys'} else{.}) %>%

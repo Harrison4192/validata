@@ -7,8 +7,8 @@
 #' @return description of mappings
 #' @export
 #'
-#' @examples iris %>% determine_mapping(everything())
-determine_mapping <- function(df, ...){
+#' @examples iris %>% determine_cardinality(everything())
+determine_cardinality <- function(df, ...){
 
 
   df %>%
@@ -27,7 +27,7 @@ determine_mapping <- function(df, ...){
       nm1 <- rlang::sym(names(df1)[i])
       nm2 <- rlang::sym(names(df1)[j])
 
-      cnf_output <- append(cnf_output, utils::capture.output(suppressMessages(dataValidation::confirm_mapping(df1, !!nm1, !!nm2, view = F))) )
+      cnf_output <- append(cnf_output, utils::capture.output(suppressMessages(dataValidation::confirm_cardinality(df1, !!nm1, !!nm2, view = F))) )
     }
 
   }

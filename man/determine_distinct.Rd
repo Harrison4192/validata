@@ -24,6 +24,3 @@ At level 1, the function tests if individual columns are primary keys
 At level 2, the function tests n C 2 combinations of columns to see if they form primary keys.
 The final level is testing all columns at once.
 }
-\examples{
-iris \%>\% determine_distinct(everything())
-}

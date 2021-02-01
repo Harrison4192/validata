@@ -6,3 +6,7 @@
 ^\.github$
 ^README\.Rmd$
 ^build_package\.R$
+^doc$
+^Meta$
+^.*\.Rproj$
+^\.Rproj\.user$

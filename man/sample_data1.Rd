@@ -14,6 +14,11 @@
 sample_data1
 }
 \description{
-sample data with 125 rows
+Sample Data
 }
-\keyword{datasets}
+\keyword{125}
+\keyword{data}
+\keyword{internal}
+\keyword{rows}
+\keyword{sample}
+\keyword{with}

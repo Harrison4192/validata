@@ -16,12 +16,13 @@ reference:
 - title: CONFIRM relationships for individual columns
   contents:
   - '`confirm_distinct`'
-  - '`confirm_mapping`'
+  - '`confirm_cardinality`'
   - '`confirm_overlap`'
 - title: DETERMINE relationships automatically
   contents:
   - '`determine_distinct`'
-  - '`determine_mapping`'
+  - '`determine_cardinality`'
+  - '`determine_overlap`'
 articles:
 - title: All vignettes
   desc: null

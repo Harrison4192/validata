@@ -12,21 +12,27 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+library(lemon)
+knit_print.data.frame <- lemon_print
 ```
+
 
 ```{r setup}
 library(dataValidation)
 library(tidyselect)
 ```
 
+# Distinct
+
 ## Confirm Distinct
 
 In data analysis tasks we often have data sets with multiple possible ID columns, but it's not always clear which combination uniquely identifies each row.
 
-sample_data1 has 3 ID type columns and 3 value columns.
+sample_data1 has 125 row with 3 ID type columns and 3 value columns.
 
-```{r}
-DT::datatable(sample_data1)
+```{r render=lemon_print}
+head(sample_data1)
 ```
 Let's use `confirm_distinct` iteratively to find the uniquely identifying columns of sample_data1.
 
@@ -56,18 +62,53 @@ sample_data1 %>%
   determine_distinct(matches("ID"))
 ```
 
-## Confirm Mapping
+# Cardinality
+
+In data-modeling cardinality refers to the mapping between the rows of two tables, see [Wikipedia: cardinality](https://en.wikipedia.org/wiki/Cardinality_(data_modeling))  
+
+`confirm_cardinality` tells you the mapping between two columns in a data frame:
+
+- 1 - 1 mapping
+- 1 - many mapping
+- many - 1 mapping
+- many - many mapping
+
+
+## Confirm cardinality
+
+`confirm_cardinality` gives the option to view which type of mapping is associated with each individual row. 
 
 ```{r}
 sample_data1 %>% 
-  confirm_mapping(ID_COL1, ID_COL2, view = F)
+  confirm_cardinality(ID_COL1, ID_COL2, view = F)
 ```
 
-## Determine Mapping
+## Determine cardinality
 
 ```{r}
 sample_data1 %>% 
-  determine_mapping(everything())
+  determine_cardinality(everything())
 ```
 
+# Overlap
 
+The `overlap` functions give a venn style description of the values in 2 columns. This is especially useful before performing a `join` function, and you want to confirm that the dataframes have matching keys. 
+
+## Confirm Overlap
+
+`confirm_overlap` is different from the other `confirm` functions in that it takes 2 vectors as arguments, instead of a data frame. This is to allow the user to test overlap between different dataframes, or arbitrary vectors if necesary. 
+
+```{r render=lemon_print}
+
+confirm_overlap(iris$Sepal.Width, iris$Petal.Length)
+```
+
+## Determine Overlap
+
+`determine_overlap` takes a dataframe and a tidyselect specification, and returns a tibble summarizing all of the pairwise overlaps. Only pairs with matching types are tested. 
+
+```{r render=lemon_print}
+iris %>% 
+  determine_overlap(everything())
+```
+Note that the `overlap` functions only test pairwise overlaps. For multi-column and large-scale overlap testing, see [Complex Upset Plots](https://krassowski.github.io/complex-upset/)
