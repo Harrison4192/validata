@@ -64,7 +64,7 @@ determine_distinct <- function(df, ...){
 
 
 
-    dataValidation::make_distincts(df, ...) -> dst_list
+    valiData::make_distincts(df, ...) -> dst_list
 
 
 
@@ -79,7 +79,7 @@ determine_distinct <- function(df, ...){
 
 utils::capture.output(
       the_lev %>%
-        purrr::pmap_lgl(., ~dataValidation::confirm_distinct(df, ...)) -> dst_nms)
+        purrr::pmap_lgl(., ~valiData::confirm_distinct(df, ...)) -> dst_nms)
 
     the_lev %>%
       tibble::as_tibble() %>%

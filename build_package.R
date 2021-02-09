@@ -1,12 +1,13 @@
 
 # load developer libraries ------------------------------------------------
+xfun::gsub_dir(pattern = "dataValidation", replacement = "valiData", ext = "yml")
 
 
 
 library(pacman)
 p_load(rstudioapi, devtools, roxygen2, usethis, pkgdown,
        ymlthis, magrittr, fs, covr, gitcreds, credentials,
-       badger, hexSticker, gh)
+       badger, hexSticker, gh, xfun)
 
 
 # add this file to .Rbuildignore ------------------------------------------

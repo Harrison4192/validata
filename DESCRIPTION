@@ -1,4 +1,4 @@
-Package: dataValidation
+Package: valiData
 Title: Validation For Data Frames
 Version: 0.0.0.9000
 Authors@R: 
@@ -8,8 +8,8 @@ Authors@R:
            email = "Harrison4192@gmail.com")
 Description: Functions for validating the structure and properties of data frames.
 License: MIT + file LICENSE
-URL: https://harrison4192.github.io/dataValidation, https://github.com/Harrison4192/dataValidation
-BugReports: https://github.com/Harrison4192/dataValidation/issues 
+URL: https://harrison4192.github.io/valiData, https://github.com/Harrison4192/valiData
+BugReports: https://github.com/Harrison4192/valiData/issues 
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

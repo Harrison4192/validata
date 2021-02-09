@@ -1,1 +1,1 @@
-utils::globalVariables(".", package = "dataValidation")
+utils::globalVariables(".", package = "valiData")

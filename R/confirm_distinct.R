@@ -30,7 +30,7 @@ confirm_distinct <- function(.data, ...) {
 
   .data1 %>% names %>% rlang::syms(.) -> cols
 
-  dataValidation::n_dupes(.data) -> d_rows
+  valiData::n_dupes(.data) -> d_rows
 
   if(d_rows > 0) {
     print(stringr::str_glue("database has {d_rows} duplicate rows"))

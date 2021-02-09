@@ -19,7 +19,7 @@ knit_print.data.frame <- lemon_print
 
 
 ```{r setup}
-library(dataValidation)
+library(valiData)
 library(tidyselect)
 ```
 
