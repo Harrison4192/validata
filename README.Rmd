@@ -19,9 +19,10 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/Harrison4192/valiData/workflows/R-CMD-check/badge.svg)](https://github.com/Harrison4192/valiData/actions)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/valiData)](https://CRAN.R-project.org/package=valiData)
-`r badger::badge_cran_download("dataCleaner", "grand-total", "blue")`
-`r badger::badge_code_size("Harrison4192/dataCleaner")`
-`r badger::badge_last_commit("Harrison4192/dataCleaner")`
+
+`r badger::badge_cran_download("valiData", "grand-total", "blue")`
+`r badger::badge_code_size("Harrison4192/valiData")`
+`r badger::badge_last_commit("Harrison4192/valiData")`
 <!-- badges: end -->
 
 The goal of valiData is to provide functions for validating the structure and properties of data frames.

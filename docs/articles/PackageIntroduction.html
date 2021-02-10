@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PackageIntroduction • valiData</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -74,6 +74,9 @@
     <span class="fab fa-github fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://harrison4192.github.io/TidyConsultant/">TC</a>
 </li>
       </ul>
 </div>
@@ -194,8 +197,8 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample_data1</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/determine_distinct.html">determine_distinct</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">matches</a></span><span class="op">(</span><span class="st">"ID"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-69cef949efdb1d179a51" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-69cef949efdb1d179a51">{"x":{"data":{"LEVEL 3":"ID_COL1, ID_COL2, ID_COL3","LEVEL 2":"no primary keys","LEVEL 1":"no primary keys"},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-173352a5b179e2b2fd02" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-173352a5b179e2b2fd02">{"x":{"data":{"LEVEL 3":"ID_COL1, ID_COL2, ID_COL3","LEVEL 2":"no primary keys","LEVEL 1":"no primary keys"},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="cardinality" class="section level1">
@@ -224,8 +227,8 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample_data1</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/determine_cardinality.html">determine_cardinality</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-d984cbc57c875de9225e" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d984cbc57c875de9225e">{"x":{"data":{"1 - 1 mapping":["VAL2 and VAL1","VAL3 and VAL1","VAL3 and VAL2"],"1 - many mapping":[],"many - 1 mapping":["VAL1 and ID_COL1","VAL1 and ID_COL2","VAL1 and ID_COL3","VAL2 and ID_COL1","VAL2 and ID_COL2","VAL2 and ID_COL3","VAL3 and ID_COL1","VAL3 and ID_COL2","VAL3 and ID_COL3"],"many - many mapping":["ID_COL2 and ID_COL1","ID_COL3 and ID_COL1","ID_COL3 and ID_COL2"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2de3dd5ee453f50be8ea" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2de3dd5ee453f50be8ea">{"x":{"data":{"1 - 1 mapping":["VAL2 and VAL1","VAL3 and VAL1","VAL3 and VAL2"],"1 - many mapping":[],"many - 1 mapping":["VAL1 and ID_COL1","VAL1 and ID_COL2","VAL1 and ID_COL3","VAL2 and ID_COL1","VAL2 and ID_COL2","VAL2 and ID_COL3","VAL3 and ID_COL1","VAL3 and ID_COL2","VAL3 and ID_COL3"],"many - many mapping":["ID_COL2 and ID_COL1","ID_COL3 and ID_COL1","ID_COL3 and ID_COL2"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="overlap" class="section level1">

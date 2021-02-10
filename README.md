@@ -10,9 +10,10 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/valiData)](https://CRAN.R-project.org/package=valiData)
-[![](http://cranlogs.r-pkg.org/badges/grand-total/dataCleaner?color=blue)](https://cran.r-project.org/package=dataCleaner)
-[![](https://img.shields.io/github/languages/code-size/Harrison4192/dataCleaner.svg)](https://github.com/Harrison4192/dataCleaner)
-[![](https://img.shields.io/github/last-commit/Harrison4192/dataCleaner.svg)](https://github.com/Harrison4192/dataCleaner/commits/master)
+
+[![](http://cranlogs.r-pkg.org/badges/grand-total/valiData?color=blue)](https://cran.r-project.org/package=valiData)
+[![](https://img.shields.io/github/languages/code-size/Harrison4192/valiData.svg)](https://github.com/Harrison4192/valiData)
+[![](https://img.shields.io/github/last-commit/Harrison4192/valiData.svg)](https://github.com/Harrison4192/valiData/commits/master)
 <!-- badges: end -->
 
 The goal of valiData is to provide functions for validating the

@@ -27,6 +27,10 @@ usethis::use_pkgdown()
 ymlthis::pkgdown_template() %>%
   ymlthis::use_pkgdown_yml()
 
+# website design ----------------------------------------------------------
+
+bslib::bootswatch_themes()
+
 # usethis: add packages ---------------------------------------------------
 
 usethis::use_pipe()
