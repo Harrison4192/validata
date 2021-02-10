@@ -29,7 +29,7 @@ ymlthis::pkgdown_template() %>%
 
 # website design ----------------------------------------------------------
 
-bslib::bootswatch_themes()
+# bslib::bootswatch_themes()
 
 # usethis: add packages ---------------------------------------------------
 
@@ -109,10 +109,7 @@ build_readme()
 build_site()
 check()
 preview_site()
-
 load_all()
-
-determine_overlap(iris, everything())
 build_vignettes()
 
 

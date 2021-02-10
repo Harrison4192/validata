@@ -20,7 +20,6 @@ Imports:
     stringr,
     janitor,
     rlang,
-    dlookr,
     tidyselect,
     purrr,
     magrittr,
