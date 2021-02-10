@@ -1,11 +1,12 @@
 Package: valiData
-Title: Validation For Data Frames
+Title: Validate Tibbles
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Harrison",
            family = "Tietze",
            role = c("aut", "cre"),
            email = "Harrison4192@gmail.com")
+Maintainer: Harrison Tietze <Harrison4192@gmail.com>
 Description: Functions for validating the structure and properties of data frames.
 License: MIT + file LICENSE
 URL: https://harrison4192.github.io/valiData, https://github.com/Harrison4192/valiData
