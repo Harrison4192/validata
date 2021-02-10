@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Confirm structural mapping between 2 columns — confirm_cardinality • valiData</title>
+<title>valiData: Validation For Data Frames — valiData-package • valiData</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Confirm structural mapping between 2 columns — confirm_cardinality" />
-<meta property="og:description" content="The mapping between elements of 2 columns can have 4 different relationships: one - one, one - many, many - one, many - many.
-This function returns a view of the mappings by row, and prints a summary to the console." />
+<meta property="og:title" content="valiData: Validation For Data Frames — valiData-package" />
+<meta property="og:description" content="Functions for validating the structure and properties of data frames." />
 
 
 
@@ -137,46 +136,30 @@ This function returns a view of the mappings by row, and prints a summary to the
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Confirm structural mapping between 2 columns</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/valiData/blob/master/R/confirm_cardinality.R'><code>R/confirm_cardinality.R</code></a></small>
-    <div class="hidden name"><code>confirm_cardinality.Rd</code></div>
+    <h1>valiData: Validation For Data Frames</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/valiData/blob/master/R/dataValidation-package.R'><code>R/dataValidation-package.R</code></a></small>
+    <div class="hidden name"><code>valiData-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The mapping between elements of 2 columns can have 4 different relationships: one - one, one - many, many - one, many - many.
-This function returns a view of the mappings by row, and prints a summary to the console.</p>
+    <p>Functions for validating the structure and properties of data frames.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>confirm_cardinality</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>col1</span>, <span class='va'>col2</span>, view <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>.data</th>
-      <td><p>a data frame</p></td>
-    </tr>
-    <tr>
-      <th>col1</th>
-      <td><p>column 1</p></td>
-    </tr>
-    <tr>
-      <th>col2</th>
-      <td><p>column 2</p></td>
-    </tr>
-    <tr>
-      <th>view</th>
-      <td><p>View results?</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>A view of mappings. Also returns the view as a data frame invisibly.</p>
+    <div class='dont-index'><p>Useful links:</p><ul>
+<li><p><a href='https://harrison4192.github.io/valiData'>https://harrison4192.github.io/valiData</a></p></li>
+<li><p><a href='https://github.com/Harrison4192/valiData'>https://github.com/Harrison4192/valiData</a></p></li>
+<li><p>Report bugs at <a href='https://github.com/Harrison4192/valiData/issues'>https://github.com/Harrison4192/valiData/issues</a></p></li>
+</ul>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>iris</span> <span class='op'>%&gt;%</span> <span class='fu'>confirm_cardinality</span><span class='op'>(</span><span class='va'>Species</span>, <span class='va'>Sepal.Width</span>, view <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; many - many mapping between Species and Sepal.Width</div></pre>
+</div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p><strong>Maintainer</strong>: Harrison Tietze <a href='mailto:Harrison4192@gmail.com'>Harrison4192@gmail.com</a></p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
