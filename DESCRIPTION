@@ -32,7 +32,8 @@ Suggests:
     rmarkdown,
     badger,
     testit,
-    lemon
+    lemon,
+    webshot
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)

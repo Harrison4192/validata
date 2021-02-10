@@ -4,7 +4,7 @@
 \name{valiData-package}
 \alias{valiData}
 \alias{valiData-package}
-\title{valiData: Validation For Data Frames}
+\title{valiData: valiData}
 \description{
 Functions for validating the structure and properties of data frames.
 }
