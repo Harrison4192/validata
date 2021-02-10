@@ -1,5 +1,5 @@
 Package: valiData
-Title: Validate Tibbles
+Title: valiData
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Harrison",
