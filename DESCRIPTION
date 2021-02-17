@@ -26,7 +26,9 @@ Imports:
     tidyr,
     tibble,
     gtools,
-    listviewer
+    listviewer,
+    frameCleaneR,
+    data.table
 Suggests: 
     knitr,
     rmarkdown,

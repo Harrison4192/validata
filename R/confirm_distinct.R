@@ -24,11 +24,14 @@ n_dupes <- function(x){(x %>% nrow) - (dplyr::distinct(x) %>% nrow) -> dupes ;du
 #' @examples iris %>% confirm_distinct(Species, Sepal.Width)
 confirm_distinct <- function(.data, ...) {
 
-  .data %>% dplyr::ungroup(.) -> .data
+  if (missing(..1)) {
+    rlang::abort("requires a column argument") }
+
+  .data %>% dplyr::ungroup() -> .data
 
   .data %>% dplyr::select(...) -> .data1
 
-  .data1 %>% names %>% rlang::syms(.) -> cols
+  .data1 %>% names() %>% rlang::syms(.) -> cols
 
   valiData::n_dupes(.data) -> d_rows
 

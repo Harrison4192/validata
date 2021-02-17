@@ -23,4 +23,9 @@ The output is a printed description of the combination of columns that form uniq
 At level 1, the function tests if individual columns are primary keys
 At level 2, the function tests n C 2 combinations of columns to see if they form primary keys.
 The final level is testing all columns at once.
+\itemize{
+\item For completely unique columns, they are recorded in level 1, but then dropped from the data frame to facilitate
+the determination of multi-column primary keys.
+\item If the dataset contains duplicated rows, they are eliminated before proceeding.
+}
 }
