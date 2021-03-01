@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 
 library(lemon)
 knit_print.data.frame <- lemon_print
+iris <- tibble::tibble(iris)
 ```
 
 
@@ -100,7 +101,39 @@ The `overlap` functions give a venn style description of the values in 2 columns
 
 ```{r render=lemon_print}
 
-confirm_overlap(iris$Sepal.Width, iris$Petal.Length)
+confirm_overlap(iris$Sepal.Width, iris$Petal.Length) -> iris_overlap
+
+```
+
+`confirm_overlap` returns a summary data frame invisibly allowing you to access individual elements using the helper functions.
+
+```{r}
+print(iris_overlap)
+```
+
+Find the elements unique to the first column
+
+```{r render=lemon_print}
+iris_overlap %>% 
+  co_find_only_in_1() %>% 
+  head()
+
+```
+
+Find the elements unique to the second column
+
+```{r render=lemon_print}
+iris_overlap %>% 
+  co_find_only_in_2() %>% 
+  head()
+```
+
+Find the elements sahred by both columns
+
+```{r render=lemon_print}
+iris_overlap %>% 
+  co_find_in_both() %>% 
+  head()
 ```
 
 ## Determine Overlap
@@ -112,3 +145,41 @@ iris %>%
   determine_overlap(everything())
 ```
 Note that the `overlap` functions only test pairwise overlaps. For multi-column and large-scale overlap testing, see [Complex Upset Plots](https://krassowski.github.io/complex-upset/)
+
+# string length
+
+## confirm string length
+
+Get a frequency table of string lengths in a character column.
+Table is printed while the original df is returned invisibly with a column indicating the string lengths.
+
+```{r render=lemon_print}
+iris %>% 
+  confirm_strlen(Species) -> species_len
+```
+
+output is a dataframe
+
+```{r render=lemon_print}
+head(species_len)
+```
+
+## choose string length
+
+A helped function for the output of `confirm_strlen` that filters the database for chosen string lengths.
+
+```{r render=lemon_print}
+species_len %>% 
+  choose_strlen(len = 6) %>% 
+  head()
+```
+
+# diagnose
+
+Reproduction of diagnose from the dlookr package. Usually a good choice for first analyzing a data set. 
+
+```{r render=lemon_print}
+iris %>% 
+  diagnose()
+```
+

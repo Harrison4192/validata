@@ -49,9 +49,9 @@ usethis::use_package("badger", type = "Suggests")
 usethis::use_package("testit", type = "Suggests")
 usethis::use_package("lemon", type = "Suggests")
 
+usethis::use_r("diagnose")
 
-
-
+usethis::use_r("confirm_strlength")
 # edit R profile ----------------------------------------------------------
 
 

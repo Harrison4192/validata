@@ -52,6 +52,10 @@ confirm_overlap <- function(vec1, vec2){
 
   print(stringr::str_glue("The columns share {shared_pct}% of the total names"))
 
+  jdb %>%
+    dplyr::rename("{str_col1}" := flag1,
+           "{str_col2}" := flag2) -> jdb
+
   jdb %>% invisible
 
 }

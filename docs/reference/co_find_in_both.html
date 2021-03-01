@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Confirm Overlap — confirm_overlap • valiData</title>
+<title>confirm overlap - find entries in both dfs — co_find_in_both • valiData</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Confirm Overlap — confirm_overlap" />
-<meta property="og:description" content="A venn style summary of the overlap in unique values of 2 vectors" />
+<meta property="og:title" content="confirm overlap - find entries in both dfs — co_find_in_both" />
+<meta property="og:description" content="returns a tibble whose column are entries shared between both columns" />
 
 
 
@@ -136,41 +136,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Confirm Overlap</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/valiData/blob/master/R/confirm_overlap.R'><code>R/confirm_overlap.R</code></a></small>
-    <div class="hidden name"><code>confirm_overlap.Rd</code></div>
+    <h1>confirm overlap - find entries in both dfs</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/valiData/blob/master/R/confirm_overlap_helpers.R'><code>R/confirm_overlap_helpers.R</code></a></small>
+    <div class="hidden name"><code>co_find_in_both.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A venn style summary of the overlap in unique values of 2 vectors</p>
+    <p>returns a tibble whose column are entries shared between both columns</p>
     </div>
 
-    <pre class="usage"><span class='fu'>confirm_overlap</span><span class='op'>(</span><span class='va'>vec1</span>, <span class='va'>vec2</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>co_find_in_both</span><span class='op'>(</span><span class='va'>mdb</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>vec1</th>
-      <td><p>vector 1</p></td>
-    </tr>
-    <tr>
-      <th>vec2</th>
-      <td><p>vector 2</p></td>
+      <th>mdb</th>
+      <td><p>dataframe output from confirm_overlap</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>prints overlap summary and invisibly returns data frame with overlap data</p>
+    <p>dataframe</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>confirm_overlap</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Width</span>, <span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Length</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 4</span><span>
-#&gt;   only_in_iris_Sepal.Width only_in_iris_Sepal.Length shared_names total_names
-#&gt;                      </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>                     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>                       22                        34            1          57
-#&gt; The columns share 2% of the total names</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

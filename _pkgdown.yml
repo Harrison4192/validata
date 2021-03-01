@@ -23,6 +23,18 @@ reference:
   - '`determine_distinct`'
   - '`determine_cardinality`'
   - '`determine_overlap`'
+- title: helpers to extract output of confirm_overlap
+  contents:
+  - '`co_find_only_in_1`'
+  - '`co_find_only_in_2`'
+  - '`co_find_in_both`'
+- title: count string lengths in a character column
+  contents:
+  - 'confirm_strlen'
+  - 'choose_strlen'
+- title: additional validation functions
+  contents:
+  - 'diagnose'
 articles:
 - title: All vignettes
   desc: null
