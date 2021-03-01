@@ -27,7 +27,6 @@ Imports:
     tibble,
     gtools,
     listviewer,
-    frameCleaneR,
     data.table
 Suggests: 
     knitr,

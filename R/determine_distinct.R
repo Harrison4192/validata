@@ -135,6 +135,45 @@ if(nrow(d1) != 0){
 
 }
 
+
+pivot_summary <- function(sumr, ...){
+
+  column <- rowname <- NULL
+
+  if (!missing(..1)) {
+    sumr %>%
+      tidyr::unite(col = "column", ..., remove = T) %>% dplyr::relocate(column) -> sumr1
+
+    sumr1 %>%
+      dplyr::select(-1) %>% as.matrix() %>% mode -> output_mode
+
+  }
+  else{
+    sumr -> sumr1
+  }
+
+  sumr1 %>%
+    t %>%
+    as.data.frame() %>%
+    tibble::rownames_to_column() %>%
+    tibble::as_tibble() %>%
+    dplyr::rename(column = rowname) %>%
+    dplyr::arrange(column) -> sumr2
+
+  if (!missing(..1)) {
+    sumr2 %>%
+      janitor::row_to_names(row_number = 1) %>%
+      dplyr::mutate(dplyr::across(-1, ~as(., output_mode)))-> sumr3
+  }
+  else{
+    sumr2 -> sumr3
+  }
+
+  sumr3
+
+}
+
+
 get_unique_col_names <- function(df){
   nrow(df) -> rws
   V1 <- column <- NULL
