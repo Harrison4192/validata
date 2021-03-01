@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Automatically determine primary key — determine_distinct • valiData</title>
+<title>diagnose — diagnose • valiData</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Automatically determine primary key — determine_distinct" />
-<meta property="og:description" content="Uses confirm_distinct in an iterative fashion to determine the primary keys." />
+<meta property="og:title" content="diagnose — diagnose" />
+<meta property="og:description" content="this function is lifted from the excellent dlookr package. I have reproduced it here
+because I consider it an essential validation function, but the dlookr package itself has
+some dependencies which can be problematic for some machines to download." />
 
 
 
@@ -136,46 +138,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Automatically determine primary key</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/valiData/blob/master/R/determine_distinct.R'><code>R/determine_distinct.R</code></a></small>
-    <div class="hidden name"><code>determine_distinct.Rd</code></div>
+    <h1>diagnose</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/valiData/blob/master/R/diagnose.R'><code>R/diagnose.R</code></a></small>
+    <div class="hidden name"><code>diagnose.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Uses <code>confirm_distinct</code> in an iterative fashion to determine the primary keys.</p>
+    <p>this function is lifted from the excellent <code>dlookr</code> package. I have reproduced it here
+because I consider it an essential validation function, but the <code>dlookr</code> package itself has
+some dependencies which can be problematic for some machines to download.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>determine_distinct</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>diagnose</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>a data frame</p></td>
+      <td><p>dataframe</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>columns or a tidyselect specification</p></td>
+      <td><p>tidyselect</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>none</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p>dataframe summary</p>
 
-    <p>The goal of this function is to automatically determine which columns uniquely identify the rows of a dataframe.
-The output is a printed description of the combination of columns that form unique identifiers at each level.
-At level 1, the function tests if individual columns are primary keys
-At level 2, the function tests n C 2 combinations of columns to see if they form primary keys.
-The final level is testing all columns at once.</p><ul>
-<li><p>For completely unique columns, they are recorded in level 1, but then dropped from the data frame to facilitate
-the determination of multi-column primary keys.</p></li>
-<li><p>If the dataset contains duplicated rows, they are eliminated before proceeding.</p></li>
-</ul>
-
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>iris</span> <span class='op'>%&gt;%</span> <span class='fu'>diagnose</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 6</span><span>
+#&gt;   variables    types   missing_count missing_percent unique_count unique_rate
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Sepal.Length numeric             0               0           35       0.233
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Sepal.Width  numeric             0               0           23       0.153
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Petal.Length numeric             0               0           43       0.287
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Petal.Width  numeric             0               0           22       0.147
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Species      factor              0               0            3       0.02 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

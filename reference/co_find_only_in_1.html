@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Automatically determine primary key — determine_distinct • valiData</title>
+<title>confirm overlap - find entries only in df 1 — co_find_only_in_1 • valiData</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Automatically determine primary key — determine_distinct" />
-<meta property="og:description" content="Uses confirm_distinct in an iterative fashion to determine the primary keys." />
+<meta property="og:title" content="confirm overlap - find entries only in df 1 — co_find_only_in_1" />
+<meta property="og:description" content="returns a tibble whose column are entries unique to the column in the first df" />
 
 
 
@@ -136,45 +136,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Automatically determine primary key</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/valiData/blob/master/R/determine_distinct.R'><code>R/determine_distinct.R</code></a></small>
-    <div class="hidden name"><code>determine_distinct.Rd</code></div>
+    <h1>confirm overlap - find entries only in df 1</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/valiData/blob/master/R/confirm_overlap_helpers.R'><code>R/confirm_overlap_helpers.R</code></a></small>
+    <div class="hidden name"><code>co_find_only_in_1.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Uses <code>confirm_distinct</code> in an iterative fashion to determine the primary keys.</p>
+    <p>returns a tibble whose column are entries unique to the column in the first df</p>
     </div>
 
-    <pre class="usage"><span class='fu'>determine_distinct</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>co_find_only_in_1</span><span class='op'>(</span><span class='va'>mdb</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>a data frame</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>columns or a tidyselect specification</p></td>
+      <th>mdb</th>
+      <td><p>dataframe output from confirm_overlap</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>none</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The goal of this function is to automatically determine which columns uniquely identify the rows of a dataframe.
-The output is a printed description of the combination of columns that form unique identifiers at each level.
-At level 1, the function tests if individual columns are primary keys
-At level 2, the function tests n C 2 combinations of columns to see if they form primary keys.
-The final level is testing all columns at once.</p><ul>
-<li><p>For completely unique columns, they are recorded in level 1, but then dropped from the data frame to facilitate
-the determination of multi-column primary keys.</p></li>
-<li><p>If the dataset contains duplicated rows, they are eliminated before proceeding.</p></li>
-</ul>
-
+    <p>dataframe</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
