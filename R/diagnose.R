@@ -15,7 +15,7 @@
 #' @examples iris %>% diagnose()
 diagnose <- function(df, ...) {
 
-  df <- select_otherwise(..., otherwise = tidyselect::everything(), return_type = "df")
+  df <- select_otherwise(df, ..., otherwise = tidyselect::everything(), return_type = "df")
 
   variable_type <- purrr::map_chr(df, class)
 
@@ -49,8 +49,7 @@ count_missing <- function(x){
 diagnose_missing <- function(df, ...){
 
 
-  df <-
-    select_otherwise(df,
+  df <- select_otherwise(df,
                      ...,
                      otherwise = tidyselect::everything(),
                      return_type = "df")
@@ -97,14 +96,10 @@ select_otherwise <- function(.data, ..., otherwise, col = NULL, return_type = c(
   otherwise = rlang::enexpr(otherwise)
 
 
-  tidyselect::eval_select(
-    .dots, data = .data
-  ) -> eval1
+  tidyselect::eval_select(.dots, data = .data) -> eval1
 
   if(length(eval1) == 0){
-    tidyselect::eval_select(
-      otherwise, data = .data
-    ) -> eval1
+    tidyselect::eval_select( otherwise, data = .data) -> eval1
   }
 
   tidyselect::eval_select(col, data = .data) %>%
