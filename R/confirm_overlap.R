@@ -5,12 +5,13 @@
 #'
 #' @param vec1 vector 1
 #' @param vec2 vector 2
+#' @param return_summary logical. If false, returns the database invisibly to be queried by helper functions.
 #'
-#' @return prints overlap summary and invisibly returns data frame with overlap data
+#' @return tibble. overlap summary or overlap table
 #' @export
 #'
 #' @examples confirm_overlap(iris$Sepal.Width, iris$Sepal.Length)
-confirm_overlap <- function(vec1, vec2){
+confirm_overlap <- function(vec1, vec2, return_summary = T){
 
   x <- flag2 <- flag1 <- both_flags <- NULL
 
@@ -44,19 +45,22 @@ confirm_overlap <- function(vec1, vec2){
       !!nm_col1 := sum(flag1 == 1 & flag2 == 0),
       !!nm_col2 := sum(flag1 == 0 & flag2 == 1),
       shared_names = sum(both_flags == 2),
-      total_names = jdb %>% nrow) -> jdb_sum
-  print(jdb_sum)
+      total_names = jdb %>% nrow,
+      pct_shared = scales::percent(shared_names/ total_names)) -> jdb_sum
 
 
-  shared_pct <- (jdb_sum$shared_names / jdb_sum$total_names * 100) %>% round
-
-  print(stringr::str_glue("The columns share {shared_pct}% of the total names"))
 
   jdb %>%
     dplyr::rename("{str_col1}" := flag1,
            "{str_col2}" := flag2) -> jdb
 
-  jdb %>% invisible
+  if(return_summary){
+    jdb_sum
+  } else{
+    print(jdb_sum)
+    invisible(jdb)
+  }
+
 
 }
 

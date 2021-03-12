@@ -35,7 +35,7 @@ ymlthis::pkgdown_template() %>%
 
 usethis::use_pipe()
 
-usethis::use_package("rstudioapi")
+usethis::use_package("scales")
 usethis::use_package("dplyr")
 usethis::use_package("stringr")
 usethis::use_package("tidyselect")
@@ -113,3 +113,7 @@ load_all()
 build_vignettes()
 
 
+iris %>%
+  determine_overlap(Petal.Length, Petal.Width)
+
+confirm_overlap(iris$Sepal.Length, iris$Sepal.Width)

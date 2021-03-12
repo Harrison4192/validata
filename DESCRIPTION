@@ -27,7 +27,8 @@ Imports:
     tibble,
     gtools,
     listviewer,
-    data.table
+    data.table,
+    scales
 Suggests: 
     knitr,
     rmarkdown,
