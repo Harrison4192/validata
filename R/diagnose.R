@@ -17,6 +17,8 @@ diagnose <- function(df, ...) {
 
   df <- select_otherwise(df, ..., otherwise = tidyselect::everything(), return_type = "df")
 
+  vars <- names(df)
+
   variable_type <- purrr::map_chr(df, class)
 
   missing_count <- purrr::map_int(df, count_missing)
