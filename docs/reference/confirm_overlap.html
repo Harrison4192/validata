@@ -145,7 +145,7 @@
     <p>A venn style summary of the overlap in unique values of 2 vectors</p>
     </div>
 
-    <pre class="usage"><span class='fu'>confirm_overlap</span><span class='op'>(</span><span class='va'>vec1</span>, <span class='va'>vec2</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>confirm_overlap</span><span class='op'>(</span><span class='va'>vec1</span>, <span class='va'>vec2</span>, return_tibble <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,19 +158,22 @@
       <th>vec2</th>
       <td><p>vector 2</p></td>
     </tr>
+    <tr>
+      <th>return_tibble</th>
+      <td><p>logical. If TRUE, returns  a tibble. otherwise by default returns the database invisibly to be queried by helper functions.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>prints overlap summary and invisibly returns data frame with overlap data</p>
+    <p>tibble. overlap summary or overlap table</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>confirm_overlap</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Width</span>, <span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Length</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 4</span><span>
-#&gt;   only_in_iris_Sepal.Width only_in_iris_Sepal.Length shared_names total_names
-#&gt;                      </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>                     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>                       22                        34            1          57
-#&gt; The columns share 2% of the total names</div></span></pre>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 5</span><span>
+#&gt;   only_in_iris_Sepal.W… only_in_iris_Sepal.… shared_names total_names pct_shared
+#&gt;                   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>                    22                   34            1          57 2%        </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

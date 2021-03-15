@@ -1,6 +1,6 @@
 
 # load developer libraries ------------------------------------------------
-xfun::gsub_dir(pattern = "dataValidation", replacement = "valiData", ext = "yml")
+xfun::gsub_dir(dir = "vignettes", pattern = "cardinality", replacement = "mapping")
 
 
 
@@ -35,7 +35,7 @@ ymlthis::pkgdown_template() %>%
 
 usethis::use_pipe()
 
-usethis::use_package("scales")
+usethis::use_package("utils")
 usethis::use_package("dplyr")
 usethis::use_package("stringr")
 usethis::use_package("tidyselect")
@@ -107,13 +107,8 @@ usethis::use_github_pages()
 document()
 build_readme()
 build_site()
-check()
+devtools::check()
 preview_site()
 load_all()
 build_vignettes()
 
-
-iris %>%
-  determine_overlap(Petal.Length, Petal.Width)
-
-confirm_overlap(iris$Sepal.Length, iris$Sepal.Width)

@@ -5,15 +5,15 @@
 #'
 #' @param vec1 vector 1
 #' @param vec2 vector 2
-#' @param return_summary logical. If false, returns the database invisibly to be queried by helper functions.
+#' @param return_tibble logical. If TRUE, returns  a tibble. otherwise by default returns the database invisibly to be queried by helper functions.
 #'
 #' @return tibble. overlap summary or overlap table
 #' @export
 #'
 #' @examples confirm_overlap(iris$Sepal.Width, iris$Sepal.Length)
-confirm_overlap <- function(vec1, vec2, return_summary = T){
+confirm_overlap <- function(vec1, vec2, return_tibble = F){
 
-  x <- flag2 <- flag1 <- both_flags <- NULL
+  x <- flag2 <- flag1 <- both_flags <- shared_names <- total_names <- NULL
 
 
   rlang::enexpr(vec1) %>% deparse %>% stringr::str_replace(stringr::fixed("$"), "_") -> str_col1
@@ -54,7 +54,7 @@ confirm_overlap <- function(vec1, vec2, return_summary = T){
     dplyr::rename("{str_col1}" := flag1,
            "{str_col2}" := flag2) -> jdb
 
-  if(return_summary){
+  if(return_tibble){
     jdb_sum
   } else{
     print(jdb_sum)

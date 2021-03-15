@@ -11,8 +11,8 @@
 #' @return A view of mappings. Also returns the view as a data frame invisibly.
 #' @export
 #'
-#' @examples iris %>% confirm_cardinality(Species, Sepal.Width, view = FALSE)
-confirm_cardinality <- function(.data, col1, col2, view = T){
+#' @examples iris %>% confirm_mapping(Species, Sepal.Width, view = FALSE)
+confirm_mapping <- function(.data, col1, col2, view = T){
 
   dupe_count <- one_to_many <- many_to_one <- NULL
   .data <- dplyr::ungroup(.data)

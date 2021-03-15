@@ -15,7 +15,7 @@ diagnose(df, ...)
 dataframe summary
 }
 \description{
-this function is lifted from the excellent \code{dlookr} package. I have reproduced it here
+this function is reproduced from the excellent \code{dlookr} package with a few tweaks
 because I consider it an essential validation function, but the \code{dlookr} package itself has
 some dependencies which can be problematic for some machines to download.
 }

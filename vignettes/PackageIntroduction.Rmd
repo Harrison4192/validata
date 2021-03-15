@@ -63,11 +63,10 @@ sample_data1 %>%
   determine_distinct(matches("ID"))
 ```
 
-# Cardinality
+# Mapping
 
-In data-modeling cardinality refers to the mapping between the rows of two tables, see [Wikipedia: cardinality](https://en.wikipedia.org/wiki/Cardinality_(data_modeling))  
 
-`confirm_cardinality` tells you the mapping between two columns in a data frame:
+`confirm_mapping` tells you the mapping between two columns in a data frame:
 
 - 1 - 1 mapping
 - 1 - many mapping
@@ -75,20 +74,20 @@ In data-modeling cardinality refers to the mapping between the rows of two table
 - many - many mapping
 
 
-## Confirm cardinality
+## Confirm mapping
 
-`confirm_cardinality` gives the option to view which type of mapping is associated with each individual row. 
+`confirm_mapping` gives the option to view which type of mapping is associated with each individual row. 
 
 ```{r}
 sample_data1 %>% 
-  confirm_cardinality(ID_COL1, ID_COL2, view = F)
+  confirm_mapping(ID_COL1, ID_COL2, view = F)
 ```
 
-## Determine cardinality
+## Determine mapping
 
 ```{r}
 sample_data1 %>% 
-  determine_cardinality(everything())
+  determine_mapping(everything())
 ```
 
 # Overlap

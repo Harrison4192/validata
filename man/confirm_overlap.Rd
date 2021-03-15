@@ -4,15 +4,17 @@
 \alias{confirm_overlap}
 \title{Confirm Overlap}
 \usage{
-confirm_overlap(vec1, vec2)
+confirm_overlap(vec1, vec2, return_tibble = F)
 }
 \arguments{
 \item{vec1}{vector 1}
 
 \item{vec2}{vector 2}
+
+\item{return_tibble}{logical. If TRUE, returns  a tibble. otherwise by default returns the database invisibly to be queried by helper functions.}
 }
 \value{
-prints overlap summary and invisibly returns data frame with overlap data
+tibble. overlap summary or overlap table
 }
 \description{
 A venn style summary of the overlap in unique values of 2 vectors

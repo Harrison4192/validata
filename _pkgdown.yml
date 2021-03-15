@@ -16,12 +16,12 @@ reference:
 - title: CONFIRM relationships for individual columns
   contents:
   - '`confirm_distinct`'
-  - '`confirm_cardinality`'
+  - '`confirm_mapping`'
   - '`confirm_overlap`'
 - title: DETERMINE relationships automatically
   contents:
   - '`determine_distinct`'
-  - '`determine_cardinality`'
+  - '`determine_mapping`'
   - '`determine_overlap`'
 - title: helpers to extract output of confirm_overlap
   contents:
@@ -32,9 +32,12 @@ reference:
   contents:
   - 'confirm_strlen'
   - 'choose_strlen'
-- title: additional validation functions
+- title: diagnosis functions
   contents:
   - 'diagnose'
+  - 'diagnose_missing'
+  - 'view_missing'
+
 articles:
 - title: All vignettes
   desc: null

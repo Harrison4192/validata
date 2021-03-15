@@ -28,7 +28,8 @@ Imports:
     gtools,
     listviewer,
     data.table,
-    scales
+    scales,
+    utils
 Suggests: 
     knitr,
     rmarkdown,

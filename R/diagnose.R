@@ -2,7 +2,7 @@
 
 #' diagnose
 #'
-#' this function is lifted from the excellent `dlookr` package. I have reproduced it here with a few tweaks
+#' this function is reproduced from the excellent `dlookr` package with a few tweaks
 #' because I consider it an essential validation function, but the `dlookr` package itself has
 #' some dependencies which can be problematic for some machines to download.
 #'
@@ -15,7 +15,7 @@
 #' @examples iris %>% diagnose()
 diagnose <- function(df, ...) {
 
-  df <- select_otherwise(df, ..., otherwise = tidyselect::everything(), return_type = "df")
+  df <- select_otherwise(df, ..., return_type = "df")
 
   vars <- names(df)
 
@@ -27,13 +27,17 @@ diagnose <- function(df, ...) {
 
   data_count <- nrow(df)
 
+  if(data_count == 0){
+
+    return(print("data frame is empty") )
+  }
+
   tibble::tibble(variables = vars, types = variable_type,
          missing_count = missing_count,
          missing_percent = missing_count / data_count * 100,
          unique_count = unique_count,
          unique_rate = unique_count / data_count)
 }
-
 
 
 count_missing <- function(x){
@@ -50,10 +54,10 @@ count_missing <- function(x){
 #' @export
 diagnose_missing <- function(df, ...){
 
+  missings <- NULL
 
   df <- select_otherwise(df,
                      ...,
-                     otherwise = tidyselect::everything(),
                      return_type = "df")
 
   missing_count <-  purrr::map_df(df, count_missing)
@@ -64,8 +68,8 @@ diagnose_missing <- function(df, ...){
     tibble::rownames_to_column() %>%
     tibble::as_tibble() %>%
     rlang::set_names(c("column", "missings")) %>%
-    dplyr::arrange(missings ) %>%
-    filter(missings > 0) -> missing_count
+    dplyr::arrange(dplyr::desc(missings )) %>%
+    dplyr::filter(missings > 0) -> missing_count
 
   missing_count %>%
     unlist() %>%
@@ -77,6 +81,31 @@ if(misscond){
   }
 }
 
+#' view_missing
+#'
+#' View rows of the dataframe where columns in the tidyselect specification contain missings
+#' by default, detects missings in any column. The result is by default displayed in the viewer pane.
+#' Can be returned as a tibble optionally.
+#'
+#' @param df dataframe
+#' @param ... tidyselect
+#' @param view logical. if false, returns tibble
+#'
+#' @return tibble
+#' @export
+view_missing <- function(df, ..., view = T){
+
+  df %>% select_otherwise(...) -> col_indx
+
+  df %>%
+    dplyr::filter(dplyr::if_any(tidyselect::any_of(col_indx), .fns = is.na)) -> missings
+
+  if(view){
+    utils::View(missings)
+  } else{
+    missings
+  }
+}
 
 #' @param .data dataframe
 #' @param ... tidyselect
@@ -87,7 +116,7 @@ if(misscond){
 #' @return integer vector by default. possibly data frame or character vector
 #' @keywords internal
 #'
-select_otherwise <- function(.data, ..., otherwise, col = NULL, return_type = c("index", "names", "df")){
+select_otherwise <- function(.data, ..., otherwise = tidyselect::everything(), col = NULL, return_type = c("index", "names", "df")){
 
   return_type <- return_type[1]
 

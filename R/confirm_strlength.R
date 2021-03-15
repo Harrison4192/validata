@@ -43,3 +43,5 @@ choose_strlen <- function(mdb, len) {
     mdb %>%
     dplyr::filter(.[[my_col]] %in% len)
   }
+
+
