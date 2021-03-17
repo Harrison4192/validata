@@ -12,7 +12,7 @@ determine_mapping <- function(df, ...){
 
 
   df %>%
-    dplyr::select(...) %>%
+    select_otherwise(..., otherwise = where(guess_id_col), return_type = "df") %>%
     dplyr::ungroup(.) -> df1
 
   if(ncol(df1) < 2){

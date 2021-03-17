@@ -73,13 +73,7 @@ determine_distinct <- function(df, ...){
 
   get_unique_col_names(df) -> unique_names
 
-  if (missing(..1)) {
-    df %>%
-      dplyr::select(tidyselect::everything()) %>% names() %>% setdiff(unique_names) -> db_names
-  } else {
-    df %>%
-      dplyr::select(...) %>% names()  %>% setdiff(unique_names) -> db_names
-  }
+  df %>% select_otherwise(..., otherwise = where(guess_id_col), return_type = "names") %>% setdiff(unique_names) -> db_names
 
   df %>% dplyr::select(-tidyselect::any_of(unique_names)) -> df
 

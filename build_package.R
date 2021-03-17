@@ -43,13 +43,15 @@ usethis::use_package("purrr")
 usethis::use_package("janitor")
 usethis::use_package("tibble")
 usethis::use_package("frameCleaneR")
-usethis::use_package("data.table")
+usethis::use_package("BBmisc")
 
 usethis::use_package("badger", type = "Suggests")
 usethis::use_package("testit", type = "Suggests")
 usethis::use_package("lemon", type = "Suggests")
 
-usethis::use_r("diagnose")
+usethis::use_r("possibly_id_col")
+usethis::use_r("possibly_id_col")
+
 
 usethis::use_r("confirm_strlength")
 # edit R profile ----------------------------------------------------------

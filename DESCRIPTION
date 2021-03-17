@@ -29,7 +29,8 @@ Imports:
     listviewer,
     data.table,
     scales,
-    utils
+    utils,
+    BBmisc
 Suggests: 
     knitr,
     rmarkdown,

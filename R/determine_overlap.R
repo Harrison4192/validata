@@ -8,7 +8,7 @@
 #'
 determine_overlap <- function(db, ...) {
   db %>%
-    dplyr::select(...) -> db1
+    dplyr::select_otherwise(..., otherwise = where(guess_id_col)) -> db1
 
   names_list(db1, 2) -> db_names_list
 
