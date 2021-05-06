@@ -36,6 +36,7 @@ reference:
   contents:
   - 'diagnose'
   - 'diagnose_missing'
+  - 'diagnose_category'
   - 'view_missing'
 
 articles:

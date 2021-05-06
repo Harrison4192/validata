@@ -108,3 +108,34 @@ view_missing <- function(df, ..., view = T){
   }
 }
 
+
+
+#' diagnose category
+#'
+#' @param .data dataframe
+#' @param max_distinct integer
+#'
+#' @return dataframe
+#' @export
+diagnose_category <- function(.data, ..., max_distinct = 5){
+  n <-  NULL
+
+  .data %>%
+    purrr::map_int(dplyr::n_distinct) %>%
+    subset(. < max_distinct) %>%
+    names() -> nms
+
+  .data %>%
+    select_otherwise(..., otherwise = where(is.character) | where(is.factor),　return_type = "names") -> nms1
+
+  intersect(nms, nms1) -> nms2
+
+  purrr::map(nms2,
+             function(x) {.data %>%
+                 dplyr::count(!!rlang::sym(x)) %>%
+                 dplyr::mutate(column = names(.)[1], .before = 1) %>%
+                 dplyr::rename(level = 2) %>%
+                 dplyr::arrange(desc(n))}) %>%
+    rlist::list.rbind() %>%
+    tibble::as_tibble()
+}
