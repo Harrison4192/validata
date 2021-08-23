@@ -56,6 +56,8 @@ diagnose_missing <- function(df, ...){
 
   missings <- NULL
 
+  nrow(df) -> total_rows
+
   df <- select_otherwise(df,
                      ...,
                      otherwise = tidyselect::everything(),
@@ -70,7 +72,8 @@ diagnose_missing <- function(df, ...){
     tibble::as_tibble() %>%
     rlang::set_names(c("column", "missings")) %>%
     dplyr::arrange(dplyr::desc(missings )) %>%
-    dplyr::filter(missings > 0) -> missing_count
+    dplyr::filter(missings > 0) %>%
+    dplyr::mutate(missing_ratio = missings / total_rows) -> missing_count
 
   missing_count %>%
     unlist() %>%
@@ -120,6 +123,8 @@ view_missing <- function(df, ..., view = T){
 diagnose_category <- function(.data, ..., max_distinct = 5){
   n <-  NULL
 
+  nrow(.data) -> total_rows
+
   .data %>%
     purrr::map_int(dplyr::n_distinct) %>%
     subset(. < max_distinct) %>%
@@ -137,5 +142,50 @@ diagnose_category <- function(.data, ..., max_distinct = 5){
                  dplyr::rename(level = 2) %>%
                  dplyr::arrange(desc(n))}) %>%
     rlist::list.rbind() %>%
-    tibble::as_tibble()
+    tibble::as_tibble() %>%
+    dplyr::mutate(ratio = n / total_rows)
+}
+
+#' diagnose_numeric
+#'
+#' @param .data dataframe
+#' @param ... tidyselect
+#'
+#' @return dataframe
+#' @export
+#'
+#' @examples
+diagnose_numeric <- function(.data, ...){
+
+  .data %>%
+    select_otherwise(..., where(is.numeric), return_type = "df") -> df
+
+fns <-   list(zeros = ~sum(. == 0, na.rm = T),
+       minus = ~sum(. < 0, na.rm = T),
+       infs = ~sum(is.infinite(.)),
+       min = ~min(., na.rm = T),
+       mean = ~mean(., na.rm = T),
+       max = ~max(., na.rm = T),
+       `|x|<1 (ratio)` = ~sum( -1 < . & . < 1, na.rm =T) / length(.) ,
+       integer_ratio = ~sum(. %% 2 == 0, na.rm =T) / length(.) )
+
+
+col_list <- list()
+
+   for(fun in seq_along(fns)){
+     purrr::map_dbl(df, fns[[fun]]) %>%
+       tibble::enframe(name = NULL, value  = names(fns[fun])) -> alist
+
+    rlist::list.append(col_list, alist) -> col_list
+
+
+   }
+
+tibble::tibble(variables = names(df)) %>%
+  dplyr::bind_cols(
+    rlist::list.cbind(col_list)
+  ) %>%
+  frameCleaneR::set_int()
+
+
 }

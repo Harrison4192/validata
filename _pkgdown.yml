@@ -37,6 +37,7 @@ reference:
   - 'diagnose'
   - 'diagnose_missing'
   - 'diagnose_category'
+  - 'diagnose_numeric'
   - 'view_missing'
 
 articles:

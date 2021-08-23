@@ -30,7 +30,8 @@ Imports:
     data.table,
     scales,
     utils,
-    BBmisc
+    BBmisc,
+    frameCleaneR
 Suggests: 
     knitr,
     rmarkdown,
