@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Automatically determine primary key — determine_distinct • validata</title>
+<title>diagnose category — diagnose_category • validata</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Automatically determine primary key — determine_distinct" />
-<meta property="og:description" content="Uses confirm_distinct in an iterative fashion to determine the primary keys." />
+<meta property="og:title" content="diagnose category — diagnose_category" />
+<meta property="og:description" content="diagnose category" />
 
 
 
@@ -136,45 +136,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Automatically determine primary key</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/validata/blob/master/R/determine_distinct.R'><code>R/determine_distinct.R</code></a></small>
-    <div class="hidden name"><code>determine_distinct.Rd</code></div>
+    <h1>diagnose category</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/validata/blob/master/R/diagnose.R'><code>R/diagnose.R</code></a></small>
+    <div class="hidden name"><code>diagnose_category.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Uses <code>confirm_distinct</code> in an iterative fashion to determine the primary keys.</p>
+    <p>diagnose category</p>
     </div>
 
-    <pre class="usage"><span class='fu'>determine_distinct</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>diagnose_category</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>...</span>, max_distinct <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>a data frame</p></td>
+      <th>.data</th>
+      <td><p>dataframe</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>columns or a tidyselect specification</p></td>
+      <th>max_distinct</th>
+      <td><p>integer</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>none</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The goal of this function is to automatically determine which columns uniquely identify the rows of a dataframe.
-The output is a printed description of the combination of columns that form unique identifiers at each level.
-At level 1, the function tests if individual columns are primary keys
-At level 2, the function tests n C 2 combinations of columns to see if they form primary keys.
-The final level is testing all columns at once.</p><ul>
-<li><p>For completely unique columns, they are recorded in level 1, but then dropped from the data frame to facilitate
-the determination of multi-column primary keys.</p></li>
-<li><p>If the dataset contains duplicated rows, they are eliminated before proceeding.</p></li>
-</ul>
-
+    <p>dataframe</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

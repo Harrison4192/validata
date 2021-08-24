@@ -1,5 +1,5 @@
-Package: valiData
-Title: valiData
+Package: validata
+Title: validata
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Harrison",
@@ -9,8 +9,8 @@ Authors@R:
 Maintainer: Harrison Tietze <Harrison4192@gmail.com>
 Description: Functions for validating the structure and properties of data frames.
 License: MIT + file LICENSE
-URL: https://harrison4192.github.io/valiData, https://github.com/Harrison4192/valiData
-BugReports: https://github.com/Harrison4192/valiData/issues 
+URL: https://harrison4192.github.io/validata, https://github.com/Harrison4192/validata
+BugReports: https://github.com/Harrison4192/validata/issues 
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -31,7 +31,7 @@ Imports:
     scales,
     utils,
     BBmisc,
-    frameCleaneR
+    framecleaner
 Suggests: 
     knitr,
     rmarkdown,

@@ -8,6 +8,7 @@
 #'
 #' @param df dataframe
 #' @param ... tidyselect
+#' @importFrom framecleaner select_otherwise
 #'
 #' @return dataframe summary
 #' @export
@@ -185,7 +186,7 @@ tibble::tibble(variables = names(df)) %>%
   dplyr::bind_cols(
     rlist::list.cbind(col_list)
   ) %>%
-  frameCleaneR::set_int()
+  framecleaner::set_int()
 
 
 }

@@ -59,7 +59,7 @@ usethis::use_r("confirm_strlength")
 
 edit_r_profile()
 
-
+remotes::install_github()
 
 # add rmd sections with usethis -------------------------------------------
 
@@ -107,10 +107,10 @@ usethis::use_github_pages()
 # build and check ---------------------------------------------------------
 
 devtools::document()
-build_readme()
-build_site()
+devtools::build_readme()
+devtools::build_site()
 devtools::check()
 preview_site()
 load_all()
-build_vignettes()
+devtools::build_vignettes()
 

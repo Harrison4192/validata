@@ -20,7 +20,7 @@ iris <- tibble::tibble(iris)
 
 
 ```{r setup}
-library(valiData)
+library(validata)
 library(tidyselect)
 ```
 
@@ -139,7 +139,7 @@ iris_overlap %>%
 
 `determine_overlap` takes a dataframe and a tidyselect specification, and returns a tibble summarizing all of the pairwise overlaps. Only pairs with matching types are tested. 
 
-```{r render=lemon_print}
+```{r eval=FALSE, include=FALSE, render=lemon_print}
 iris %>% 
   determine_overlap(everything())
 ```

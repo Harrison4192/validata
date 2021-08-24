@@ -5,6 +5,8 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
+library(badger)
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -13,32 +15,32 @@ knitr::opts_chunk$set(
 )
 ```
 
-# valiData
+# validata
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/Harrison4192/valiData/workflows/R-CMD-check/badge.svg)](https://github.com/Harrison4192/valiData/actions)
+[![R-CMD-check](https://github.com/Harrison4192/validata/workflows/R-CMD-check/badge.svg)](https://github.com/Harrison4192/validata/actions)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/valiData)](https://CRAN.R-project.org/package=valiData)
+[![CRAN status](https://www.r-pkg.org/badges/version/validata)](https://CRAN.R-project.org/package=validata)
 
-`r badger::badge_cran_download("valiData", "grand-total", "blue")`
-`r badger::badge_code_size("Harrison4192/valiData")`
-`r badger::badge_last_commit("Harrison4192/valiData")`
+`r badger::badge_cran_download("validata", "grand-total", "blue")`
+`r badger::badge_code_size("Harrison4192/validata")`
+`r badger::badge_last_commit("Harrison4192/validata")`
 <!-- badges: end -->
 
-The goal of valiData is to provide functions for validating the structure and properties of data frames.
+The goal of validata is to provide functions for validating the structure and properties of data frames.
 
 ## Installation
 
-You can install the released version of valiData from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of validata from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("valiData")
+install.packages("validata")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("Harrison4192/valiData")
+devtools::install_github("Harrison4192/validata")
 ```
 
