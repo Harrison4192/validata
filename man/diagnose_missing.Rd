@@ -15,5 +15,6 @@ diagnose_missing(df, ...)
 tibble summary
 }
 \description{
-diagnose_missing
+faster than diagnose if emphasis is on diagnosing missing values. Also, only shows the columns with
+any missing values.
 }
