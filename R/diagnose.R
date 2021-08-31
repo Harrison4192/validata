@@ -48,6 +48,9 @@ count_missing <- function(x){
 
 #' diagnose_missing
 #'
+#' faster than diagnose if emphasis is on diagnosing missing values. Also, only shows the columns with
+#' any missing values.
+#'
 #' @param df dataframe
 #' @param ... optional tidyselect
 #'
@@ -116,6 +119,9 @@ view_missing <- function(df, ..., view = T){
 
 #' diagnose category
 #'
+#' counts the distinct entries of categorical variables. The `max_distinct` argument limits the scope to
+#' categorical variables with a maximum number of unique entries, to prevent overflow.
+#'
 #' @param .data dataframe
 #' @param max_distinct integer
 #'
@@ -147,15 +153,44 @@ diagnose_category <- function(.data, ..., max_distinct = 5){
     dplyr::mutate(ratio = n / total_rows)
 }
 
+#' data_mode
+#'
+#' @param x vector
+#' @param prop show frequency as ratio? default T
+#'
+#' @return named double of length 1
+#' @keywords internal
+#'
+data_mode <- function(x, prop = T){
+
+  x %>%
+    table() -> xt
+
+  xt[which.max(xt)] -> xt_mode
+
+  if(prop){
+
+    xt_mode %>%
+      `/`(length(x)) -> xt_mode
+
+  }
+
+  xt_mode
+
+}
+
 #' diagnose_numeric
+#'
+#' Inputs a dataframe and returns various summary statistics of the numeric columns. For example `zeros` returns the number
+#' of 0 values in that column. `minus` counts negative values and `infs` counts Inf values. Other rarer metrics
+#' are also returned that may be helpful for quick diagnosis or understanding of numeric data. `mode` returns the most common
+#' value in the column (choses at random in case of tie) , and `mode_ratio` returns its frequency as a ratio of the total rows
 #'
 #' @param .data dataframe
 #' @param ... tidyselect
 #'
 #' @return dataframe
 #' @export
-#'
-#' @examples
 diagnose_numeric <- function(.data, ...){
 
   .data %>%
@@ -163,12 +198,14 @@ diagnose_numeric <- function(.data, ...){
 
 fns <-   list(zeros = ~sum(. == 0, na.rm = T),
        minus = ~sum(. < 0, na.rm = T),
-       infs = ~sum(is.infinite(.)),
+       infs = ~sum(is.infinite(.), na.rm = T),
        min = ~min(., na.rm = T),
        mean = ~mean(., na.rm = T),
        max = ~max(., na.rm = T),
-       `|x|<1 (ratio)` = ~sum( -1 < . & . < 1, na.rm =T) / length(.) ,
-       integer_ratio = ~sum(. %% 2 == 0, na.rm =T) / length(.) )
+       `|x|<1 (ratio)` = ~mean( -1 < . & . < 1, na.rm =T)  ,
+       integer_ratio = ~mean(as.integer(.) == ., na.rm =T),
+       mode = ~as.double(names(data_mode(.))),
+       mode_ratio = data_mode)
 
 
 col_list <- list()
@@ -179,8 +216,10 @@ col_list <- list()
 
     rlist::list.append(col_list, alist) -> col_list
 
-
    }
+
+message(stringr::str_c(nrow(.data), " rows"))
+
 
 tibble::tibble(variables = names(df)) %>%
   dplyr::bind_cols(

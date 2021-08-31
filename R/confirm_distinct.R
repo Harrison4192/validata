@@ -4,7 +4,6 @@
 #'
 #' @return an integer; number of dupe rows
 #' @keywords internal
-#' @export
 #'
 n_dupes <- function(x){(x %>% nrow) - (dplyr::distinct(x) %>% nrow) -> dupes ;dupes}
 
@@ -26,11 +25,11 @@ confirm_distinct <- function(.data, ...) {
 
   .data %>%
     dplyr::ungroup() %>%
-    select_otherwise(..., otherwise = where(guess_id_col), return_type = "df") -> .data1
+    select_otherwise(..., return_type = "df") -> .data1
 
   .data1 %>% names() %>% rlang::syms(.) -> cols
 
-  valiData::n_dupes(.data) -> d_rows
+  n_dupes(.data) -> d_rows
 
   if(d_rows > 0) {
     print(stringr::str_glue("database has {d_rows} duplicate rows"))

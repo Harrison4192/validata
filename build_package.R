@@ -60,7 +60,6 @@ usethis::use_r("confirm_strlength")
 edit_r_profile()
 
 remotes::install_github()
-
 # add rmd sections with usethis -------------------------------------------
 
 use_readme_rmd()

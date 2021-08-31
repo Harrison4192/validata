@@ -6,7 +6,6 @@
 #'
 #' @return a list of name combinations
 #' @keywords internal
-#' @export
 #'
 names_list <- function(df, len){
 
@@ -24,7 +23,6 @@ names_list <- function(df, len){
 #'
 #' @return a list of name lists
 #' @keywords internal
-#' @export
 #'
 make_distincts <- function(df, ...){
 
