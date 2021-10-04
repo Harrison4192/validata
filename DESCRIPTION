@@ -31,11 +31,11 @@ Imports:
     scales,
     utils,
     BBmisc,
-    framecleaner
+    framecleaner,
+    badger
 Suggests: 
     knitr,
     rmarkdown,
-    badger,
     testit,
     lemon,
     webshot
