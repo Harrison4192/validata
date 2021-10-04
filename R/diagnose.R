@@ -2,9 +2,8 @@
 
 #' diagnose
 #'
-#' this function is reproduced from the excellent `dlookr` package with a few tweaks
-#' because I consider it an essential validation function, but the `dlookr` package itself has
-#' some dependencies which can be problematic for some machines to download.
+#' this function is inspired by the excellent `dlookr` package. It takes a dataframe and returns
+#' a summary of unique and missing values of the columns.
 #'
 #' @param df dataframe
 #' @param ... tidyselect
@@ -56,6 +55,12 @@ count_missing <- function(x){
 #'
 #' @return tibble summary
 #' @export
+#'
+#' @examples
+#'
+#' iris %>%
+#' framecleaner::make_na(Species, vec = "setosa") %>%
+#' diagnose_missing()
 diagnose_missing <- function(df, ...){
 
   missings <- NULL
@@ -101,6 +106,12 @@ if(misscond){
 #'
 #' @return tibble
 #' @export
+#'
+#' @examples
+#'
+#' iris %>%
+#' framecleaner::make_na(Species, vec = "setosa") %>%
+#' view_missing(view = FALSE)
 view_missing <- function(df, ..., view = T){
 
   df %>% select_otherwise(..., otherwise = tidyselect::everything()) -> col_indx
@@ -127,6 +138,11 @@ view_missing <- function(df, ..., view = T){
 #'
 #' @return dataframe
 #' @export
+#'
+#' @examples
+#'
+#' iris %>%
+#' diagnose_category()
 diagnose_category <- function(.data, ..., max_distinct = 5){
   n <-  NULL
 
@@ -191,6 +207,11 @@ data_mode <- function(x, prop = T){
 #'
 #' @return dataframe
 #' @export
+#'
+#' @examples
+#'
+#' iris %>%
+#' diagnose_numeric
 diagnose_numeric <- function(.data, ...){
 
   .data %>%

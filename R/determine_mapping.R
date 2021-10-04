@@ -3,16 +3,21 @@
 #'
 #' @param df a data frame
 #' @param ... columns or a tidyselect specification
+#' @param listviewer logical. defaults to TRUE to view output using the listviewer package
+
 #'
 #' @return description of mappings
 #' @export
 #'
-#' @examples iris %>% determine_mapping(everything())
-determine_mapping <- function(df, ...){
+#' @examples
+#'
+#' iris %>%
+#' determine_mapping(listviewer = FALSE)
+determine_mapping <- function(df, ..., listviewer = TRUE){
 
 
   df %>%
-    select_otherwise(..., otherwise = where(guess_id_col), return_type = "df") %>%
+    framecleaner::select_otherwise(..., otherwise = tidyselect::everything(), return_type = "df") %>%
     dplyr::ungroup(.) -> df1
 
   if(ncol(df1) < 2){
@@ -41,7 +46,9 @@ determine_mapping <- function(df, ...){
   list_output[["many - 1 mapping"]] <- stringr::str_subset(cnf_output1, "many - 1 mapping") %>% stringr::str_remove(., "many - 1 mapping between ")
   list_output[["many - many mapping"]] <- stringr::str_subset(cnf_output1, "many - many mapping") %>% stringr::str_remove(., "many - many mapping between ")
 
-
-listviewer::jsonedit(list_output)
+if(listviewer){
+listviewer::jsonedit(list_output)} else {
+  list_output
+}
 
 }

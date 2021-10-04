@@ -1,7 +1,10 @@
 
 #' Confirm Overlap
 #'
-#' A venn style summary of the overlap in unique values of 2 vectors
+#' Prints a venn-diagram style summary of the unique value
+#' overlap between two columns and also invisibly returns a dataframe that can be assigned to a variable
+#' and queried with the overlap helpers. The helpers can return values that appeared only the first col, second col,
+#' or both cols.
 #'
 #' @param vec1 vector 1
 #' @param vec2 vector 2
@@ -10,7 +13,20 @@
 #' @return tibble. overlap summary or overlap table
 #' @export
 #'
-#' @examples confirm_overlap(iris$Sepal.Width, iris$Sepal.Length)
+#' @examples
+#'
+#' confirm_overlap(iris$Sepal.Width, iris$Sepal.Length) -> iris_overlap
+#'
+#' iris_overlap
+#'
+#' iris_overlap %>%
+#' co_find_only_in_1()
+#'
+#' iris_overlap %>%
+#' co_find_only_in_2()
+#'
+#' iris_overlap %>%
+#' co_find_in_both()
 confirm_overlap <- function(vec1, vec2, return_tibble = F){
 
   x <- flag2 <- flag1 <- both_flags <- shared_names <- total_names <- NULL

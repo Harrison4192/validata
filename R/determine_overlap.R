@@ -1,14 +1,22 @@
 #' Determine Overlap
 #'
+#' Uses \code{confirm_overlap} in a pairise fashion to see venn style comparison of unique values between
+#' the columns chosen by a tidyselect specification.
+#'
 #' @param db a data frame
-#' @param ... tidyselect specification
+#' @param ... tidyselect specification. Default being everything.
 #'
 #' @return tibble
 #' @export
 #'
+#' @examples
+#'
+#' iris %>%
+#' determine_overlap()
+#'
 determine_overlap <- function(db, ...) {
   db %>%
-    select_otherwise(..., otherwise = where(guess_id_col)) -> db1
+    framecleaner::select_otherwise(..., otherwise = tidyselect::everything(), return_type = "df") -> db1
 
   names_list(db1, 2) -> db_names_list
 

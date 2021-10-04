@@ -2,21 +2,39 @@
 % Please edit documentation in R/confirm_strlength.R
 \name{confirm_strlen}
 \alias{confirm_strlen}
+\alias{choose_strlen}
 \title{confirm string length}
 \usage{
 confirm_strlen(mdb, col)
+
+choose_strlen(cs_output, len)
 }
 \arguments{
 \item{mdb}{dataframe}
 
 \item{col}{unquoted column}
+
+\item{cs_output}{dataframe. output from \code{confirm_strlen}}
+
+\item{len}{integer vector.}
 }
 \value{
 prints a summary and returns a dataframe invisibly
+
+dataframe with original columns, filtered to the specific string length
 }
 \description{
-returns a count table of string lengths for a character column.
+returns a count table of string lengths for a character column. The helper function \code{choose_strlen}
+filters dataframe for rows containing specific string length for the specified column.
 }
 \examples{
-iris \%>\% confirm_strlen(Species)
+
+iris \%>\%
+tibble::as_tibble() \%>\%
+confirm_strlen(Species) -> iris_cs_output
+
+iris_cs_output
+
+iris_cs_output \%>\%
+choose_strlen(6)
 }

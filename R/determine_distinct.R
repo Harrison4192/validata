@@ -56,11 +56,26 @@ make_distincts <- function(df, ...){
 #' * If the dataset contains duplicated rows, they are eliminated before proceeding.
 #'
 #' @param df a data frame
-#' @param ... columns or a tidyselect specification
+#' @param ... columns or a tidyselect specification. defaults to everything
+#' @param listviewer logical. defaults to TRUE to view output using the listviewer package
 #'
-#' @return none
+#' @return list
 #' @export
-determine_distinct <- function(df, ...){
+#'
+#' @examples
+#'
+#' sample_data1 %>%
+#' head
+#'
+#'
+#'## on level 1, each column is tested as a unique identifier. the VAL columns have no
+#'## duplicates and hence qualify, even though they normally would be considered as IDs
+#'## on level 3, combinations of 3 columns are tested. implying that ID_COL 1,2,3 form a unique key
+#'## level 2 does not appear, implying that combinations of any 2 ID_COLs do not form a unique key
+#'
+#' sample_data1 %>%
+#' determine_distinct(listviewer = FALSE)
+determine_distinct <- function(df, ..., listviewer = TRUE){
 
   n_dupes(df) -> d_rows
 
@@ -71,7 +86,7 @@ determine_distinct <- function(df, ...){
 
   get_unique_col_names(df) -> unique_names
 
-  df %>% select_otherwise(..., otherwise = where(guess_id_col), return_type = "names") %>% setdiff(unique_names) -> db_names
+  df %>% framecleaner::select_otherwise(..., otherwise = tidyselect::everything(), return_type = "names") %>% setdiff(unique_names) -> db_names
 
   df %>% dplyr::select(-tidyselect::any_of(unique_names)) -> df
 
@@ -121,8 +136,17 @@ if(nrow(d1) != 0){
 
   new_list[["LEVEL 1"]] <- as.list(unique_names)
   new_list %>%
-    purrr::map(~if(rlang::is_empty(.)) {. <- 'no primary keys'} else{.}) %>%
-    listviewer::jsonedit(.)
+    purrr::map(~if(rlang::is_empty(.)) {. <- 'no primary keys'} else{.}) -> output
+
+  if(listviewer){
+
+    output %>%
+      listviewer::jsonedit(.)
+  } else{
+
+    output
+  }
+
 
 
 }

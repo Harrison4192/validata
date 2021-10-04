@@ -18,3 +18,9 @@ tibble summary
 faster than diagnose if emphasis is on diagnosing missing values. Also, only shows the columns with
 any missing values.
 }
+\examples{
+
+iris \%>\%
+framecleaner::make_na(Species, vec = "setosa") \%>\%
+diagnose_missing()
+}

@@ -197,8 +197,8 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample_data1</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/determine_distinct.html">determine_distinct</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">matches</a></span><span class="op">(</span><span class="st">"ID"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-799f9c6fdc36bf9b094c" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-799f9c6fdc36bf9b094c">{"x":{"data":{"LEVEL 3":"ID_COL1, ID_COL2, ID_COL3","LEVEL 1":["VAL1","VAL2","VAL3"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8257f7fbd9f34e57f003" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8257f7fbd9f34e57f003">{"x":{"data":{"LEVEL 3":"ID_COL1, ID_COL2, ID_COL3","LEVEL 1":["VAL1","VAL2","VAL3"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="mapping" class="section level1">
@@ -226,8 +226,8 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample_data1</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/determine_mapping.html">determine_mapping</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-b8cf5cd733c00d805b90" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b8cf5cd733c00d805b90">{"x":{"data":{"1 - 1 mapping":["VAL2 and VAL1","VAL3 and VAL1","VAL3 and VAL2"],"1 - many mapping":[],"many - 1 mapping":["VAL1 and ID_COL1","VAL1 and ID_COL2","VAL1 and ID_COL3","VAL2 and ID_COL1","VAL2 and ID_COL2","VAL2 and ID_COL3","VAL3 and ID_COL1","VAL3 and ID_COL2","VAL3 and ID_COL3"],"many - many mapping":["ID_COL2 and ID_COL1","ID_COL3 and ID_COL1","ID_COL3 and ID_COL2"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-923fbe521c713bd062ca" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-923fbe521c713bd062ca">{"x":{"data":{"1 - 1 mapping":["VAL2 and VAL1","VAL3 and VAL1","VAL3 and VAL2"],"1 - many mapping":[],"many - 1 mapping":["VAL1 and ID_COL1","VAL1 and ID_COL2","VAL1 and ID_COL3","VAL2 and ID_COL1","VAL2 and ID_COL2","VAL2 and ID_COL3","VAL3 and ID_COL1","VAL3 and ID_COL2","VAL3 and ID_COL3"],"many - many mapping":["ID_COL2 and ID_COL1","ID_COL3 and ID_COL1","ID_COL3 and ID_COL2"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="overlap" class="section level1">
@@ -265,7 +265,7 @@
 <p>Find the elements unique to the first column</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris_overlap</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/co_find_only_in_1.html">co_find_only_in_1</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/confirm_overlap.html">co_find_only_in_1</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -295,7 +295,7 @@
 <p>Find the elements unique to the second column</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris_overlap</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/co_find_only_in_2.html">co_find_only_in_2</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/confirm_overlap.html">co_find_only_in_2</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -325,7 +325,7 @@
 <p>Find the elements sahred by both columns</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris_overlap</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/co_find_in_both.html">co_find_in_both</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/confirm_overlap.html">co_find_in_both</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -444,7 +444,7 @@
 <p>A helped function for the output of <code>confirm_strlen</code> that filters the database for chosen string lengths.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">species_len</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/choose_strlen.html">choose_strlen</a></span><span class="op">(</span>len <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/confirm_strlen.html">choose_strlen</a></span><span class="op">(</span>len <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">

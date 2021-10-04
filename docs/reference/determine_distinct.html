@@ -145,7 +145,7 @@
     <p>Uses <code>confirm_distinct</code> in an iterative fashion to determine the primary keys.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>determine_distinct</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>determine_distinct</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>...</span>, listviewer <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,13 +156,17 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>columns or a tidyselect specification</p></td>
+      <td><p>columns or a tidyselect specification. defaults to everything</p></td>
+    </tr>
+    <tr>
+      <th>listviewer</th>
+      <td><p>logical. defaults to TRUE to view output using the listviewer package</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>none</p>
+    <p>list</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The goal of this function is to automatically determine which columns uniquely identify the rows of a dataframe.
@@ -176,6 +180,41 @@ the determination of multi-column primary keys.</p></li>
 </ul>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='va'>sample_data1</span> <span class='op'>%&gt;%</span>
+<span class='va'>head</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 6</span><span>
+#&gt;   ID_COL1 ID_COL2 ID_COL3     VAL1   VAL2   VAL3
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    </span><span style='text-decoration: underline;'>2</span><span>413    </span><span style='text-decoration: underline;'>1</span><span>034    </span><span style='text-decoration: underline;'>1</span><span>014 -</span><span style='color: #BB0000;'>0.063</span><span style='color: #BB0000;text-decoration: underline;'>9</span><span>  -</span><span style='color: #BB0000;'>1.16</span><span>  -</span><span style='color: #BB0000;'>0.302</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>    </span><span style='text-decoration: underline;'>2</span><span>413    </span><span style='text-decoration: underline;'>1</span><span>034    </span><span style='text-decoration: underline;'>1</span><span>322  0.363    1.62   0.165
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>    </span><span style='text-decoration: underline;'>2</span><span>413    </span><span style='text-decoration: underline;'>1</span><span>034    </span><span style='text-decoration: underline;'>2</span><span>999 -</span><span style='color: #BB0000;'>0.004</span><span style='color: #BB0000;text-decoration: underline;'>66</span><span>  1.23   0.819
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>    </span><span style='text-decoration: underline;'>2</span><span>413    </span><span style='text-decoration: underline;'>1</span><span>034    </span><span style='text-decoration: underline;'>3</span><span>544  1.83    -</span><span style='color: #BB0000;'>2.58</span><span>  -</span><span style='color: #BB0000;'>0.525</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>    </span><span style='text-decoration: underline;'>2</span><span>413    </span><span style='text-decoration: underline;'>1</span><span>034    </span><span style='text-decoration: underline;'>9</span><span>901  0.837   -</span><span style='color: #BB0000;'>0.442</span><span> -</span><span style='color: #BB0000;'>0.341</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>    </span><span style='text-decoration: underline;'>2</span><span>413    </span><span style='text-decoration: underline;'>1</span><span>122    </span><span style='text-decoration: underline;'>1</span><span>014 -</span><span style='color: #BB0000;'>0.894</span><span>   -</span><span style='color: #BB0000;'>1.11</span><span>   0.768</div><div class='input'>
+
+<span class='co'>## on level 1, each column is tested as a unique identifier. the VAL columns have no</span>
+<span class='co'>## duplicates and hence qualify, even though they normally would be considered as IDs</span>
+<span class='co'>## on level 3, combinations of 3 columns are tested. implying that ID_COL 1,2,3 form a unique key</span>
+<span class='co'>## level 2 does not appear, implying that combinations of any 2 ID_COLs do not form a unique key</span>
+
+<span class='va'>sample_data1</span> <span class='op'>%&gt;%</span>
+<span class='fu'>determine_distinct</span><span class='op'>(</span>listviewer <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $`LEVEL 3`
+#&gt; [1] "ID_COL1, ID_COL2, ID_COL3"
+#&gt; 
+#&gt; $`LEVEL 1`
+#&gt; $`LEVEL 1`[[1]]
+#&gt; [1] "VAL1"
+#&gt; 
+#&gt; $`LEVEL 1`[[2]]
+#&gt; [1] "VAL2"
+#&gt; 
+#&gt; $`LEVEL 1`[[3]]
+#&gt; [1] "VAL3"
+#&gt; 
+#&gt; </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

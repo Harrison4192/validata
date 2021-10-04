@@ -9,11 +9,18 @@ determine_overlap(db, ...)
 \arguments{
 \item{db}{a data frame}
 
-\item{...}{tidyselect specification}
+\item{...}{tidyselect specification. Default being everything.}
 }
 \value{
 tibble
 }
 \description{
-Determine Overlap
+Uses \code{confirm_overlap} in a pairise fashion to see venn style comparison of unique values between
+the columns chosen by a tidyselect specification.
+}
+\examples{
+
+iris \%>\%
+determine_overlap()
+
 }

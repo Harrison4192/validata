@@ -170,6 +170,13 @@ value in the column (choses at random in case of tie) , and <code>mode_ratio</co
 
     <p>dataframe</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='va'>iris</span> <span class='op'>%&gt;%</span>
+<span class='va'>diagnose_numeric</span>
+</div><div class='output co'>#&gt; <span class='message'>150 rows</span></div><div class='output co'>#&gt; <span class='error'>Error: Problem with `mutate()` input `..1`.</span>
+#&gt; <span class='error'><span style='color: #BB0000;'>x</span><span> object 'as_integer16_or_64' not found</span>
+#&gt; <span class='error'></span><span style='color: #0000BB;'>ℹ</span><span> Input `..1` is `dplyr::across(tidyselect::any_of(cols), .fns = as_integer16_or_64)`.</span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -9,7 +9,7 @@ development:
 
 home:
   title: Data Validation
-  description:  Functions to validate the properties of your data frames. Determine the primary keys and the mapping between columns.
+  description:  Functions to validate the properties of your data frames.
 
 
 reference:
@@ -18,20 +18,12 @@ reference:
   - '`confirm_distinct`'
   - '`confirm_mapping`'
   - '`confirm_overlap`'
+  - '`confirm_strlen`'
 - title: DETERMINE relationships automatically
   contents:
   - '`determine_distinct`'
   - '`determine_mapping`'
   - '`determine_overlap`'
-- title: helpers to extract output of confirm_overlap
-  contents:
-  - '`co_find_only_in_1`'
-  - '`co_find_only_in_2`'
-  - '`co_find_in_both`'
-- title: count string lengths in a character column
-  contents:
-  - 'confirm_strlen'
-  - 'choose_strlen'
 - title: diagnosis functions
   contents:
   - 'diagnose'

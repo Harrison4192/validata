@@ -4,15 +4,17 @@
 \alias{determine_distinct}
 \title{Automatically determine primary key}
 \usage{
-determine_distinct(df, ...)
+determine_distinct(df, ..., listviewer = TRUE)
 }
 \arguments{
 \item{df}{a data frame}
 
-\item{...}{columns or a tidyselect specification}
+\item{...}{columns or a tidyselect specification. defaults to everything}
+
+\item{listviewer}{logical. defaults to TRUE to view output using the listviewer package}
 }
 \value{
-none
+list
 }
 \description{
 Uses \code{confirm_distinct} in an iterative fashion to determine the primary keys.
@@ -28,4 +30,18 @@ The final level is testing all columns at once.
 the determination of multi-column primary keys.
 \item If the dataset contains duplicated rows, they are eliminated before proceeding.
 }
+}
+\examples{
+
+sample_data1 \%>\%
+head
+
+
+## on level 1, each column is tested as a unique identifier. the VAL columns have no
+## duplicates and hence qualify, even though they normally would be considered as IDs
+## on level 3, combinations of 3 columns are tested. implying that ID_COL 1,2,3 form a unique key
+## level 2 does not appear, implying that combinations of any 2 ID_COLs do not form a unique key
+
+sample_data1 \%>\%
+determine_distinct(listviewer = FALSE)
 }

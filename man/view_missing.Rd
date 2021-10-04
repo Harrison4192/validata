@@ -21,3 +21,9 @@ View rows of the dataframe where columns in the tidyselect specification contain
 by default, detects missings in any column. The result is by default displayed in the viewer pane.
 Can be returned as a tibble optionally.
 }
+\examples{
+
+iris \%>\%
+framecleaner::make_na(Species, vec = "setosa") \%>\%
+view_missing(view = FALSE)
+}

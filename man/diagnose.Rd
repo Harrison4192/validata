@@ -15,9 +15,8 @@ diagnose(df, ...)
 dataframe summary
 }
 \description{
-this function is reproduced from the excellent \code{dlookr} package with a few tweaks
-because I consider it an essential validation function, but the \code{dlookr} package itself has
-some dependencies which can be problematic for some machines to download.
+this function is inspired by the excellent \code{dlookr} package. It takes a dataframe and returns
+a summary of unique and missing values of the columns.
 }
 \examples{
 iris \%>\% diagnose()

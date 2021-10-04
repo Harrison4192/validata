@@ -4,12 +4,14 @@
 \alias{determine_mapping}
 \title{Determine pairwise structural mappings}
 \usage{
-determine_mapping(df, ...)
+determine_mapping(df, ..., listviewer = TRUE)
 }
 \arguments{
 \item{df}{a data frame}
 
 \item{...}{columns or a tidyselect specification}
+
+\item{listviewer}{logical. defaults to TRUE to view output using the listviewer package}
 }
 \value{
 description of mappings
@@ -18,5 +20,7 @@ description of mappings
 Determine pairwise structural mappings
 }
 \examples{
-iris \%>\% determine_mapping(everything())
+
+iris \%>\%
+determine_mapping(listviewer = FALSE)
 }
