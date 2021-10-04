@@ -13,8 +13,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-library(lemon)
-knit_print.data.frame <- lemon_print
+
 iris <- tibble::tibble(iris)
 ```
 
@@ -32,7 +31,7 @@ In data analysis tasks we often have data sets with multiple possible ID columns
 
 sample_data1 has 125 row with 3 ID type columns and 3 value columns.
 
-```{r render=lemon_print}
+```{r}
 head(sample_data1)
 ```
 Let's use `confirm_distinct` iteratively to find the uniquely identifying columns of sample_data1.
@@ -98,7 +97,7 @@ The `overlap` functions give a venn style description of the values in 2 columns
 
 `confirm_overlap` is different from the other `confirm` functions in that it takes 2 vectors as arguments, instead of a data frame. This is to allow the user to test overlap between different dataframes, or arbitrary vectors if necessary 
 
-```{r render=lemon_print}
+```{r}
 
 confirm_overlap(iris$Sepal.Width, iris$Petal.Length) -> iris_overlap
 
@@ -112,7 +111,7 @@ print(iris_overlap)
 
 Find the elements unique to the first column
 
-```{r render=lemon_print}
+```{r}
 iris_overlap %>% 
   co_find_only_in_1() %>% 
   head()
@@ -121,7 +120,7 @@ iris_overlap %>%
 
 Find the elements unique to the second column
 
-```{r render=lemon_print}
+```{r}
 iris_overlap %>% 
   co_find_only_in_2() %>% 
   head()
@@ -129,7 +128,7 @@ iris_overlap %>%
 
 Find the elements shared by both columns
 
-```{r render=lemon_print}
+```{r}
 iris_overlap %>% 
   co_find_in_both() %>% 
   head()
@@ -139,7 +138,7 @@ iris_overlap %>%
 
 `determine_overlap` takes a dataframe and a tidyselect specification, and returns a tibble summarizing all of the pairwise overlaps. Only pairs with matching types are tested. 
 
-```{r eval=FALSE, include=FALSE, render=lemon_print}
+```{r eval=FALSE, include=FALSE,}
 iris %>% 
   determine_overlap(everything())
 ```
@@ -152,14 +151,14 @@ Note that the `overlap` functions only test pairwise overlaps. For multi-column 
 Get a frequency table of string lengths in a character column.
 Table is printed while the original df is returned invisibly with a column indicating the string lengths.
 
-```{r render=lemon_print}
+```{r}
 iris %>% 
   confirm_strlen(Species) -> species_len
 ```
 
 output is a dataframe
 
-```{r render=lemon_print}
+```{r}
 head(species_len)
 ```
 
@@ -167,7 +166,7 @@ head(species_len)
 
 A helped function for the output of `confirm_strlen` that filters the database for chosen string lengths.
 
-```{r render=lemon_print}
+```{r}
 species_len %>% 
   choose_strlen(len = 6) %>% 
   head()
@@ -177,7 +176,7 @@ species_len %>%
 
 Reproduction of diagnose from the dlookr package. Usually a good choice for first analyzing a data set. 
 
-```{r render=lemon_print}
+```{r}
 iris %>% 
   diagnose()
 ```
