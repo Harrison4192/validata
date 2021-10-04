@@ -109,7 +109,7 @@ devtools::document()
 devtools::build_readme()
 devtools::build_site()
 devtools::check()
-preview_site()
+ preview_site()
 load_all()
 devtools::build_vignettes()
 

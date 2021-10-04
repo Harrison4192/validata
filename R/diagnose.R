@@ -112,7 +112,7 @@ if(misscond){
 #' iris %>%
 #' framecleaner::make_na(Species, vec = "setosa") %>%
 #' view_missing(view = FALSE)
-view_missing <- function(df, ..., view = T){
+view_missing <- function(df, ..., view = TRUE){
 
   df %>% select_otherwise(..., otherwise = tidyselect::everything()) -> col_indx
 
@@ -134,6 +134,7 @@ view_missing <- function(df, ..., view = T){
 #' categorical variables with a maximum number of unique entries, to prevent overflow.
 #'
 #' @param .data dataframe
+#' @param ... tidyselect
 #' @param max_distinct integer
 #'
 #' @return dataframe
@@ -154,7 +155,7 @@ diagnose_category <- function(.data, ..., max_distinct = 5){
     names() -> nms
 
   .data %>%
-    select_otherwise(..., otherwise = where(is.character) | where(is.factor),　return_type = "names") -> nms1
+    select_otherwise(..., otherwise = where(is.character) | where(is.factor), return_type = "names") -> nms1
 
   intersect(nms, nms1) -> nms2
 
@@ -163,7 +164,7 @@ diagnose_category <- function(.data, ..., max_distinct = 5){
                  dplyr::count(!!rlang::sym(x)) %>%
                  dplyr::mutate(column = names(.)[1], .before = 1) %>%
                  dplyr::rename(level = 2) %>%
-                 dplyr::arrange(desc(n))}) %>%
+                 dplyr::arrange(dplyr::desc(n))}) %>%
     rlist::list.rbind() %>%
     tibble::as_tibble() %>%
     dplyr::mutate(ratio = n / total_rows)
@@ -177,7 +178,7 @@ diagnose_category <- function(.data, ..., max_distinct = 5){
 #' @return named double of length 1
 #' @keywords internal
 #'
-data_mode <- function(x, prop = T){
+data_mode <- function(x, prop = TRUE){
 
   x %>%
     table() -> xt
@@ -186,8 +187,7 @@ data_mode <- function(x, prop = T){
 
   if(prop){
 
-    xt_mode %>%
-      `/`(length(x)) -> xt_mode
+    xt_mode / length(x) -> xt_mode
 
   }
 
@@ -208,7 +208,10 @@ data_mode <- function(x, prop = T){
 #' @return dataframe
 #' @export
 #'
+#'
 #' @examples
+#'
+#' library(framecleaner)
 #'
 #' iris %>%
 #' diagnose_numeric
@@ -250,3 +253,4 @@ tibble::tibble(variables = names(df)) %>%
 
 
 }
+

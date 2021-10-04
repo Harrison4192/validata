@@ -9,6 +9,8 @@ diagnose_category(.data, ..., max_distinct = 5)
 \arguments{
 \item{.data}{dataframe}
 
+\item{...}{tidyselect}
+
 \item{max_distinct}{integer}
 }
 \value{

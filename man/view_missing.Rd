@@ -4,7 +4,7 @@
 \alias{view_missing}
 \title{view_missing}
 \usage{
-view_missing(df, ..., view = T)
+view_missing(df, ..., view = TRUE)
 }
 \arguments{
 \item{df}{dataframe}

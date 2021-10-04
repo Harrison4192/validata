@@ -22,6 +22,8 @@ value in the column (choses at random in case of tie) , and \code{mode_ratio} re
 }
 \examples{
 
+library(framecleaner)
+
 iris \%>\%
 diagnose_numeric
 }

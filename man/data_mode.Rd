@@ -4,7 +4,7 @@
 \alias{data_mode}
 \title{data_mode}
 \usage{
-data_mode(x, prop = T)
+data_mode(x, prop = TRUE)
 }
 \arguments{
 \item{x}{vector}
