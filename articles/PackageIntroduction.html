@@ -114,67 +114,16 @@
 <p>In data analysis tasks we often have data sets with multiple possible ID columns, but it’s not always clear which combination uniquely identifies each row.</p>
 <p>sample_data1 has 125 row with 3 ID type columns and 3 value columns.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sample_data1</span><span class="op">)</span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="right">ID_COL1</th>
-<th align="right">ID_COL2</th>
-<th align="right">ID_COL3</th>
-<th align="right">VAL1</th>
-<th align="right">VAL2</th>
-<th align="right">VAL3</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="right">2413</td>
-<td align="right">1034</td>
-<td align="right">1014</td>
-<td align="right">-0.0638534</td>
-<td align="right">-1.1550938</td>
-<td align="right">-0.3023963</td>
-</tr>
-<tr class="even">
-<td align="right">2413</td>
-<td align="right">1034</td>
-<td align="right">1322</td>
-<td align="right">0.3633433</td>
-<td align="right">1.6203221</td>
-<td align="right">0.1649679</td>
-</tr>
-<tr class="odd">
-<td align="right">2413</td>
-<td align="right">1034</td>
-<td align="right">2999</td>
-<td align="right">-0.0046571</td>
-<td align="right">1.2283502</td>
-<td align="right">0.8186103</td>
-</tr>
-<tr class="even">
-<td align="right">2413</td>
-<td align="right">1034</td>
-<td align="right">3544</td>
-<td align="right">1.8294683</td>
-<td align="right">-2.5840119</td>
-<td align="right">-0.5249399</td>
-</tr>
-<tr class="odd">
-<td align="right">2413</td>
-<td align="right">1034</td>
-<td align="right">9901</td>
-<td align="right">0.8365013</td>
-<td align="right">-0.4415319</td>
-<td align="right">-0.3406729</td>
-</tr>
-<tr class="even">
-<td align="right">2413</td>
-<td align="right">1122</td>
-<td align="right">1014</td>
-<td align="right">-0.8943385</td>
-<td align="right">-1.1093596</td>
-<td align="right">0.7679139</td>
-</tr>
-</tbody>
-</table>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sample_data1</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 × 6</span>
+<span class="co">#&gt;   ID_COL1 ID_COL2 ID_COL3     VAL1   VAL2   VAL3</span>
+<span class="co">#&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    2413    1034    1014 -0.0639  -1.16  -0.302</span>
+<span class="co">#&gt; 2    2413    1034    1322  0.363    1.62   0.165</span>
+<span class="co">#&gt; 3    2413    1034    2999 -0.00466  1.23   0.819</span>
+<span class="co">#&gt; 4    2413    1034    3544  1.83    -2.58  -0.525</span>
+<span class="co">#&gt; 5    2413    1034    9901  0.837   -0.442 -0.341</span>
+<span class="co">#&gt; 6    2413    1122    1014 -0.894   -1.11   0.768</span></code></pre></div>
 <p>Let’s use <code>confirm_distinct</code> iteratively to find the uniquely identifying columns of sample_data1.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample_data1</span> <span class="op">%&gt;%</span> 
@@ -197,8 +146,8 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample_data1</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/determine_distinct.html">determine_distinct</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">matches</a></span><span class="op">(</span><span class="st">"ID"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-eaf10406f701f3991aac" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eaf10406f701f3991aac">{"x":{"data":{"LEVEL 3":"ID_COL1, ID_COL2, ID_COL3","LEVEL 1":["VAL1","VAL2","VAL3"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f3687eb664522d08ca61" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f3687eb664522d08ca61">{"x":{"data":{"LEVEL 3":"ID_COL1, ID_COL2, ID_COL3","LEVEL 1":["VAL1","VAL2","VAL3"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="mapping" class="section level1">
@@ -226,8 +175,8 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample_data1</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/determine_mapping.html">determine_mapping</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-591e2e40aa6b5e615dac" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-591e2e40aa6b5e615dac">{"x":{"data":{"1 - 1 mapping":["VAL2 and VAL1","VAL3 and VAL1","VAL3 and VAL2"],"1 - many mapping":[],"many - 1 mapping":["VAL1 and ID_COL1","VAL1 and ID_COL2","VAL1 and ID_COL3","VAL2 and ID_COL1","VAL2 and ID_COL2","VAL2 and ID_COL3","VAL3 and ID_COL1","VAL3 and ID_COL2","VAL3 and ID_COL3"],"many - many mapping":["ID_COL2 and ID_COL1","ID_COL3 and ID_COL1","ID_COL3 and ID_COL2"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1fd886b460d9ebc1f8d7" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1fd886b460d9ebc1f8d7">{"x":{"data":{"1 - 1 mapping":["VAL2 and VAL1","VAL3 and VAL1","VAL3 and VAL2"],"1 - many mapping":[],"many - 1 mapping":["VAL1 and ID_COL1","VAL1 and ID_COL2","VAL1 and ID_COL3","VAL2 and ID_COL1","VAL2 and ID_COL2","VAL2 and ID_COL3","VAL3 and ID_COL1","VAL3 and ID_COL2","VAL3 and ID_COL3"],"many - many mapping":["ID_COL2 and ID_COL1","ID_COL3 and ID_COL1","ID_COL3 and ID_COL2"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="overlap" class="section level1">
@@ -266,92 +215,44 @@
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris_overlap</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/confirm_overlap.html">co_find_only_in_1</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="right">iris_Sepal.Width</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="right">3.2</td>
-</tr>
-<tr class="even">
-<td align="right">3.1</td>
-</tr>
-<tr class="odd">
-<td align="right">3.4</td>
-</tr>
-<tr class="even">
-<td align="right">2.9</td>
-</tr>
-<tr class="odd">
-<td align="right">2.3</td>
-</tr>
-<tr class="even">
-<td align="right">2.8</td>
-</tr>
-</tbody>
-</table>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 × 1</span>
+<span class="co">#&gt;   iris_Sepal.Width</span>
+<span class="co">#&gt;              &lt;dbl&gt;</span>
+<span class="co">#&gt; 1              3.2</span>
+<span class="co">#&gt; 2              3.1</span>
+<span class="co">#&gt; 3              3.4</span>
+<span class="co">#&gt; 4              2.9</span>
+<span class="co">#&gt; 5              2.3</span>
+<span class="co">#&gt; 6              2.8</span></code></pre></div>
 <p>Find the elements unique to the second column</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris_overlap</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/confirm_overlap.html">co_find_only_in_2</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="right">iris_Petal.Length</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="right">1.4</td>
-</tr>
-<tr class="even">
-<td align="right">1.3</td>
-</tr>
-<tr class="odd">
-<td align="right">1.5</td>
-</tr>
-<tr class="even">
-<td align="right">1.7</td>
-</tr>
-<tr class="odd">
-<td align="right">1.6</td>
-</tr>
-<tr class="even">
-<td align="right">1.1</td>
-</tr>
-</tbody>
-</table>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 × 1</span>
+<span class="co">#&gt;   iris_Petal.Length</span>
+<span class="co">#&gt;               &lt;dbl&gt;</span>
+<span class="co">#&gt; 1               1.4</span>
+<span class="co">#&gt; 2               1.3</span>
+<span class="co">#&gt; 3               1.5</span>
+<span class="co">#&gt; 4               1.7</span>
+<span class="co">#&gt; 5               1.6</span>
+<span class="co">#&gt; 6               1.1</span></code></pre></div>
 <p>Find the elements shared by both columns</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris_overlap</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/confirm_overlap.html">co_find_in_both</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="right">x</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="right">3.5</td>
-</tr>
-<tr class="even">
-<td align="right">3.0</td>
-</tr>
-<tr class="odd">
-<td align="right">3.6</td>
-</tr>
-<tr class="even">
-<td align="right">3.9</td>
-</tr>
-<tr class="odd">
-<td align="right">3.7</td>
-</tr>
-<tr class="even">
-<td align="right">4.0</td>
-</tr>
-</tbody>
-</table>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 × 1</span>
+<span class="co">#&gt;       x</span>
+<span class="co">#&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1   3.5</span>
+<span class="co">#&gt; 2   3  </span>
+<span class="co">#&gt; 3   3.6</span>
+<span class="co">#&gt; 4   3.9</span>
+<span class="co">#&gt; 5   3.7</span>
+<span class="co">#&gt; 6   4</span></code></pre></div>
 </div>
 <div id="determine-overlap" class="section level2">
 <h2 class="hasAnchor">
@@ -376,67 +277,16 @@
 <span class="co">#&gt;               10 50   33.3%</span></code></pre></div>
 <p>output is a dataframe</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">species_len</span><span class="op">)</span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="right">Sepal.Length</th>
-<th align="right">Sepal.Width</th>
-<th align="right">Petal.Length</th>
-<th align="right">Petal.Width</th>
-<th align="left">Species</th>
-<th align="right">Species_chr_len</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-<tr class="odd">
-<td align="right">4.7</td>
-<td align="right">3.2</td>
-<td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-<tr class="even">
-<td align="right">4.6</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-<tr class="odd">
-<td align="right">5.0</td>
-<td align="right">3.6</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-<tr class="even">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.7</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-</tbody>
-</table>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">species_len</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 × 6</span>
+<span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Species_chr_len</span>
+<span class="co">#&gt;          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;             &lt;int&gt;</span>
+<span class="co">#&gt; 1          5.1         3.5          1.4         0.2 setosa                6</span>
+<span class="co">#&gt; 2          4.9         3            1.4         0.2 setosa                6</span>
+<span class="co">#&gt; 3          4.7         3.2          1.3         0.2 setosa                6</span>
+<span class="co">#&gt; 4          4.6         3.1          1.5         0.2 setosa                6</span>
+<span class="co">#&gt; 5          5           3.6          1.4         0.2 setosa                6</span>
+<span class="co">#&gt; 6          5.4         3.9          1.7         0.4 setosa                6</span></code></pre></div>
 </div>
 <div id="choose-string-length" class="section level2">
 <h2 class="hasAnchor">
@@ -445,67 +295,16 @@
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">species_len</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/confirm_strlen.html">choose_strlen</a></span><span class="op">(</span>len <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="right">Sepal.Length</th>
-<th align="right">Sepal.Width</th>
-<th align="right">Petal.Length</th>
-<th align="right">Petal.Width</th>
-<th align="left">Species</th>
-<th align="right">Species_chr_len</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-<tr class="odd">
-<td align="right">4.7</td>
-<td align="right">3.2</td>
-<td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-<tr class="even">
-<td align="right">4.6</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-<tr class="odd">
-<td align="right">5.0</td>
-<td align="right">3.6</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-<tr class="even">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.7</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-<td align="right">6</td>
-</tr>
-</tbody>
-</table>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 × 6</span>
+<span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Species_chr_len</span>
+<span class="co">#&gt;          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;             &lt;int&gt;</span>
+<span class="co">#&gt; 1          5.1         3.5          1.4         0.2 setosa                6</span>
+<span class="co">#&gt; 2          4.9         3            1.4         0.2 setosa                6</span>
+<span class="co">#&gt; 3          4.7         3.2          1.3         0.2 setosa                6</span>
+<span class="co">#&gt; 4          4.6         3.1          1.5         0.2 setosa                6</span>
+<span class="co">#&gt; 5          5           3.6          1.4         0.2 setosa                6</span>
+<span class="co">#&gt; 6          5.4         3.9          1.7         0.4 setosa                6</span></code></pre></div>
 </div>
 </div>
 <div id="diagnose" class="section level1">
@@ -514,59 +313,15 @@
 <p>Reproduction of diagnose from the dlookr package. Usually a good choice for first analyzing a data set.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/diagnose.html">diagnose</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="left">variables</th>
-<th align="left">types</th>
-<th align="right">missing_count</th>
-<th align="right">missing_percent</th>
-<th align="right">unique_count</th>
-<th align="right">unique_rate</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">Sepal.Length</td>
-<td align="left">numeric</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">35</td>
-<td align="right">0.2333333</td>
-</tr>
-<tr class="even">
-<td align="left">Sepal.Width</td>
-<td align="left">numeric</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">23</td>
-<td align="right">0.1533333</td>
-</tr>
-<tr class="odd">
-<td align="left">Petal.Length</td>
-<td align="left">numeric</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">43</td>
-<td align="right">0.2866667</td>
-</tr>
-<tr class="even">
-<td align="left">Petal.Width</td>
-<td align="left">numeric</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">22</td>
-<td align="right">0.1466667</td>
-</tr>
-<tr class="odd">
-<td align="left">Species</td>
-<td align="left">factor</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">0.0200000</td>
-</tr>
-</tbody>
-</table>
+  <span class="fu"><a href="../reference/diagnose.html">diagnose</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 5 × 6</span>
+<span class="co">#&gt;   variables    types   missing_count missing_percent unique_count unique_rate</span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;           &lt;int&gt;           &lt;dbl&gt;        &lt;int&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Sepal.Length numeric             0               0           35       0.233</span>
+<span class="co">#&gt; 2 Sepal.Width  numeric             0               0           23       0.153</span>
+<span class="co">#&gt; 3 Petal.Length numeric             0               0           43       0.287</span>
+<span class="co">#&gt; 4 Petal.Width  numeric             0               0           22       0.147</span>
+<span class="co">#&gt; 5 Species      factor              0               0            3       0.02</span></code></pre></div>
 </div>
   </div>
 
