@@ -40,7 +40,10 @@
 
 
 <meta property="og:title" content="Confirm Overlap — confirm_overlap" />
-<meta property="og:description" content="A venn style summary of the overlap in unique values of 2 vectors" />
+<meta property="og:description" content="Prints a venn-diagram style summary of the unique value
+overlap between two columns and also invisibly returns a dataframe that can be assigned to a variable
+and queried with the overlap helpers. The helpers can return values that appeared only the first col, second col,
+or both cols." />
 
 
 
@@ -137,15 +140,24 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Confirm Overlap</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/validata/blob/master/R/confirm_overlap.R'><code>R/confirm_overlap.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/validata/blob/master/R/confirm_overlap.R'><code>R/confirm_overlap.R</code></a>, <a href='https://github.com/Harrison4192/validata/blob/master/R/confirm_overlap_helpers.R'><code>R/confirm_overlap_helpers.R</code></a></small>
     <div class="hidden name"><code>confirm_overlap.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A venn style summary of the overlap in unique values of 2 vectors</p>
+    <p>Prints a venn-diagram style summary of the unique value
+overlap between two columns and also invisibly returns a dataframe that can be assigned to a variable
+and queried with the overlap helpers. The helpers can return values that appeared only the first col, second col,
+or both cols.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>confirm_overlap</span><span class='op'>(</span><span class='va'>vec1</span>, <span class='va'>vec2</span>, return_tibble <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>confirm_overlap</span><span class='op'>(</span><span class='va'>vec1</span>, <span class='va'>vec2</span>, return_tibble <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span>
+
+<span class='fu'>co_find_only_in_1</span><span class='op'>(</span><span class='va'>co_output</span><span class='op'>)</span>
+
+<span class='fu'>co_find_only_in_2</span><span class='op'>(</span><span class='va'>co_output</span><span class='op'>)</span>
+
+<span class='fu'>co_find_in_both</span><span class='op'>(</span><span class='va'>co_output</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,6 +174,10 @@
       <th>return_tibble</th>
       <td><p>logical. If TRUE, returns  a tibble. otherwise by default returns the database invisibly to be queried by helper functions.</p></td>
     </tr>
+    <tr>
+      <th>co_output</th>
+      <td><p>dataframe output from confirm_overlap</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -169,11 +185,65 @@
     <p>tibble. overlap summary or overlap table</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>confirm_overlap</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Width</span>, <span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Length</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>
+<span class='fu'>confirm_overlap</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Width</span>, <span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Length</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>iris_overlap</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 5</span>
 #&gt;   only_in_iris_Sepal.W… only_in_iris_Sepal.… shared_names total_names pct_shared
 #&gt;                   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     
-#&gt; <span style='color: #BCBCBC;'>1</span>                    22                   34            1          57 2%        </div></pre>
+#&gt; <span style='color: #BCBCBC;'>1</span>                    22                   34            1          57 2%        </div><div class='input'>
+<span class='va'>iris_overlap</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 57 × 4</span>
+#&gt;        x iris_Sepal.Width iris_Sepal.Length both_flags
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>   3.5                1                 0          1
+#&gt; <span style='color: #BCBCBC;'> 2</span>   3                  1                 0          1
+#&gt; <span style='color: #BCBCBC;'> 3</span>   3.2                1                 0          1
+#&gt; <span style='color: #BCBCBC;'> 4</span>   3.1                1                 0          1
+#&gt; <span style='color: #BCBCBC;'> 5</span>   3.6                1                 0          1
+#&gt; <span style='color: #BCBCBC;'> 6</span>   3.9                1                 0          1
+#&gt; <span style='color: #BCBCBC;'> 7</span>   3.4                1                 0          1
+#&gt; <span style='color: #BCBCBC;'> 8</span>   2.9                1                 0          1
+#&gt; <span style='color: #BCBCBC;'> 9</span>   3.7                1                 0          1
+#&gt; <span style='color: #BCBCBC;'>10</span>   4                  1                 0          1
+#&gt; <span style='color: #949494;'># … with 47 more rows</span></div><div class='input'>
+<span class='va'>iris_overlap</span> <span class='op'>%&gt;%</span>
+<span class='fu'>co_find_only_in_1</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 22 × 1</span>
+#&gt;    iris_Sepal.Width
+#&gt;               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>              3.5
+#&gt; <span style='color: #BCBCBC;'> 2</span>              3  
+#&gt; <span style='color: #BCBCBC;'> 3</span>              3.2
+#&gt; <span style='color: #BCBCBC;'> 4</span>              3.1
+#&gt; <span style='color: #BCBCBC;'> 5</span>              3.6
+#&gt; <span style='color: #BCBCBC;'> 6</span>              3.9
+#&gt; <span style='color: #BCBCBC;'> 7</span>              3.4
+#&gt; <span style='color: #BCBCBC;'> 8</span>              2.9
+#&gt; <span style='color: #BCBCBC;'> 9</span>              3.7
+#&gt; <span style='color: #BCBCBC;'>10</span>              4  
+#&gt; <span style='color: #949494;'># … with 12 more rows</span></div><div class='input'>
+<span class='va'>iris_overlap</span> <span class='op'>%&gt;%</span>
+<span class='fu'>co_find_only_in_2</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 34 × 1</span>
+#&gt;    iris_Sepal.Length
+#&gt;                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>               5.1
+#&gt; <span style='color: #BCBCBC;'> 2</span>               4.9
+#&gt; <span style='color: #BCBCBC;'> 3</span>               4.7
+#&gt; <span style='color: #BCBCBC;'> 4</span>               4.6
+#&gt; <span style='color: #BCBCBC;'> 5</span>               5  
+#&gt; <span style='color: #BCBCBC;'> 6</span>               5.4
+#&gt; <span style='color: #BCBCBC;'> 7</span>               4.8
+#&gt; <span style='color: #BCBCBC;'> 8</span>               4.3
+#&gt; <span style='color: #BCBCBC;'> 9</span>               5.8
+#&gt; <span style='color: #BCBCBC;'>10</span>               5.7
+#&gt; <span style='color: #949494;'># … with 24 more rows</span></div><div class='input'>
+<span class='va'>iris_overlap</span> <span class='op'>%&gt;%</span>
+<span class='fu'>co_find_in_both</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 1</span>
+#&gt;       x
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>   4.4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

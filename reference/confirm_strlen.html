@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="confirm string length — confirm_strlen" />
-<meta property="og:description" content="returns a count table of string lengths for a character column." />
+<meta property="og:description" content="returns a count table of string lengths for a character column. The helper function choose_strlen
+filters dataframe for rows containing specific string length for the specified column." />
 
 
 
@@ -142,10 +143,13 @@
     </div>
 
     <div class="ref-description">
-    <p>returns a count table of string lengths for a character column.</p>
+    <p>returns a count table of string lengths for a character column. The helper function <code>choose_strlen</code>
+filters dataframe for rows containing specific string length for the specified column.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>confirm_strlen</span><span class='op'>(</span><span class='va'>mdb</span>, <span class='va'>col</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>confirm_strlen</span><span class='op'>(</span><span class='va'>mdb</span>, <span class='va'>col</span><span class='op'>)</span>
+
+<span class='fu'>choose_strlen</span><span class='op'>(</span><span class='va'>cs_output</span>, <span class='va'>len</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,18 +162,61 @@
       <th>col</th>
       <td><p>unquoted column</p></td>
     </tr>
+    <tr>
+      <th>cs_output</th>
+      <td><p>dataframe. output from <code>confirm_strlen</code></p></td>
+    </tr>
+    <tr>
+      <th>len</th>
+      <td><p>integer vector.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>prints a summary and returns a dataframe invisibly</p>
+<p>dataframe with original columns, filtered to the specific string length</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>iris</span> <span class='op'>%&gt;%</span> <span class='fu'>confirm_strlen</span><span class='op'>(</span><span class='va'>Species</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>
+<span class='va'>iris</span> <span class='op'>%&gt;%</span>
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='fu'>confirm_strlen</span><span class='op'>(</span><span class='va'>Species</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>iris_cs_output</span>
 </div><div class='output co'>#&gt;  Species_chr_len  n percent
 #&gt;                6 50   33.3%
 #&gt;                9 50   33.3%
-#&gt;               10 50   33.3%</div></pre>
+#&gt;               10 50   33.3%</div><div class='input'>
+<span class='va'>iris_cs_output</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 150 × 6</span>
+#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Species_chr_len
+#&gt;           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>          5.1         3.5          1.4         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 2</span>          4.9         3            1.4         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 3</span>          4.7         3.2          1.3         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 4</span>          4.6         3.1          1.5         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 5</span>          5           3.6          1.4         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 6</span>          5.4         3.9          1.7         0.4 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 7</span>          4.6         3.4          1.4         0.3 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 8</span>          5           3.4          1.5         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 9</span>          4.4         2.9          1.4         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'>10</span>          4.9         3.1          1.5         0.1 setosa                6
+#&gt; <span style='color: #949494;'># … with 140 more rows</span></div><div class='input'>
+<span class='va'>iris_cs_output</span> <span class='op'>%&gt;%</span>
+<span class='fu'>choose_strlen</span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 50 × 6</span>
+#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Species_chr_len
+#&gt;           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>          5.1         3.5          1.4         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 2</span>          4.9         3            1.4         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 3</span>          4.7         3.2          1.3         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 4</span>          4.6         3.1          1.5         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 5</span>          5           3.6          1.4         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 6</span>          5.4         3.9          1.7         0.4 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 7</span>          4.6         3.4          1.4         0.3 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 8</span>          5           3.4          1.5         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'> 9</span>          4.4         2.9          1.4         0.2 setosa                6
+#&gt; <span style='color: #BCBCBC;'>10</span>          4.9         3.1          1.5         0.1 setosa                6
+#&gt; <span style='color: #949494;'># … with 40 more rows</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

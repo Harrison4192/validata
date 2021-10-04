@@ -166,6 +166,16 @@ categorical variables with a maximum number of unique entries, to prevent overfl
 
     <p>dataframe</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='va'>iris</span> <span class='op'>%&gt;%</span>
+<span class='fu'>diagnose_category</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 4</span>
+#&gt;   column  level          n ratio
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> Species setosa        50 0.333
+#&gt; <span style='color: #BCBCBC;'>2</span> Species versicolor    50 0.333
+#&gt; <span style='color: #BCBCBC;'>3</span> Species virginica     50 0.333</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
