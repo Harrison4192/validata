@@ -9,7 +9,7 @@ Authors@R:
 Maintainer: Harrison Tietze <Harrison4192@gmail.com>
 Description: Functions for validating the structure and properties of data frames. Answers essential questions about a data set after initial import or modification. What are the unique or missing values? What columns form a primary key? What are the properties of the numeric or categorical columns? What kind of overlap or mapping exists between 2 columns?
 License: MIT + file LICENSE
-URL: https://harrison4192.github.io/validata, https://github.com/Harrison4192/validata
+URL: https://harrison4192.github.io/validata/, https://github.com/Harrison4192/validata
 BugReports: https://github.com/Harrison4192/validata/issues 
 Encoding: UTF-8
 LazyData: true

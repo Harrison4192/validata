@@ -113,3 +113,11 @@ devtools::check()
 load_all()
 devtools::build_vignettes()
 
+
+devtools::spell_check()
+devtools::release(check = T)
+
+usethis::use_cran_comments(open = rlang::is_interactive())
+devtools::check_win_devel()
+devtools::check_rhub()
+

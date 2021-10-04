@@ -200,7 +200,7 @@ data_mode <- function(x, prop = TRUE){
 #' Inputs a dataframe and returns various summary statistics of the numeric columns. For example `zeros` returns the number
 #' of 0 values in that column. `minus` counts negative values and `infs` counts Inf values. Other rarer metrics
 #' are also returned that may be helpful for quick diagnosis or understanding of numeric data. `mode` returns the most common
-#' value in the column (choses at random in case of tie) , and `mode_ratio` returns its frequency as a ratio of the total rows
+#' value in the column (chooses at random in case of tie) , and `mode_ratio` returns its frequency as a ratio of the total rows
 #'
 #' @param .data dataframe
 #' @param ... tidyselect

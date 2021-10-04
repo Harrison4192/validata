@@ -4,14 +4,14 @@
 \name{validata-package}
 \alias{validata}
 \alias{validata-package}
-\title{validata: validata}
+\title{validata: Validate Data Frames}
 \description{
-Functions for validating the structure and properties of data frames.
+Functions for validating the structure and properties of data frames. Answers essential questions about a data set after initial import or modification. What are the unique or missing values? What columns form a primary key? What are the properties of the numeric or categorical columns? What kind of overlap or mapping exists between 2 columns?
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://harrison4192.github.io/validata}
+  \item \url{https://harrison4192.github.io/validata/}
   \item \url{https://github.com/Harrison4192/validata}
   \item Report bugs at \url{https://github.com/Harrison4192/validata/issues}
 }

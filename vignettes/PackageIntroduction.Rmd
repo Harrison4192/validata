@@ -96,7 +96,7 @@ The `overlap` functions give a venn style description of the values in 2 columns
 
 ## Confirm Overlap
 
-`confirm_overlap` is different from the other `confirm` functions in that it takes 2 vectors as arguments, instead of a data frame. This is to allow the user to test overlap between different dataframes, or arbitrary vectors if necesary. 
+`confirm_overlap` is different from the other `confirm` functions in that it takes 2 vectors as arguments, instead of a data frame. This is to allow the user to test overlap between different dataframes, or arbitrary vectors if necessary 
 
 ```{r render=lemon_print}
 
@@ -127,7 +127,7 @@ iris_overlap %>%
   head()
 ```
 
-Find the elements sahred by both columns
+Find the elements shared by both columns
 
 ```{r render=lemon_print}
 iris_overlap %>% 
