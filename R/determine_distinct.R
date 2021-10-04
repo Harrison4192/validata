@@ -62,7 +62,7 @@ make_distincts <- function(df, ...){
 #' @export
 determine_distinct <- function(df, ...){
 
-  valiData::n_dupes(df) -> d_rows
+  n_dupes(df) -> d_rows
 
   if(d_rows > 0) {
     print(stringr::str_glue("database has {d_rows} duplicate rows, and will eliminate them"))
@@ -96,7 +96,7 @@ determine_distinct <- function(df, ...){
 
 utils::capture.output(
       the_lev %>%
-        purrr::pmap_lgl(., ~valiData::confirm_distinct(df, ...)) -> dst_nms)
+        purrr::pmap_lgl(., ~confirm_distinct(df, ...)) -> dst_nms)
 
 
     the_lev %>%

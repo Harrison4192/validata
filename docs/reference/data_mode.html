@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>diagnose_missing — diagnose_missing • validata</title>
+<title>data_mode — data_mode • validata</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="diagnose_missing — diagnose_missing" />
-<meta property="og:description" content="faster than diagnose if emphasis is on diagnosing missing values. Also, only shows the columns with
-any missing values." />
+<meta property="og:title" content="data_mode — data_mode" />
+<meta property="og:description" content="data_mode" />
 
 
 
@@ -137,34 +136,33 @@ any missing values." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>diagnose_missing</h1>
+    <h1>data_mode</h1>
     <small class="dont-index">Source: <a href='https://github.com/Harrison4192/validata/blob/master/R/diagnose.R'><code>R/diagnose.R</code></a></small>
-    <div class="hidden name"><code>diagnose_missing.Rd</code></div>
+    <div class="hidden name"><code>data_mode.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>faster than diagnose if emphasis is on diagnosing missing values. Also, only shows the columns with
-any missing values.</p>
+    <p>data_mode</p>
     </div>
 
-    <pre class="usage"><span class='fu'>diagnose_missing</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>data_mode</span><span class='op'>(</span><span class='va'>x</span>, prop <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>dataframe</p></td>
+      <th>x</th>
+      <td><p>vector</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>optional tidyselect</p></td>
+      <th>prop</th>
+      <td><p>show frequency as ratio? default T</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>tibble summary</p>
+    <p>named double of length 1</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

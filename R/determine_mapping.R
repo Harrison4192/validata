@@ -27,7 +27,7 @@ determine_mapping <- function(df, ...){
       nm1 <- rlang::sym(names(df1)[i])
       nm2 <- rlang::sym(names(df1)[j])
 
-      cnf_output <- append(cnf_output, utils::capture.output(suppressMessages(valiData::confirm_mapping(df1, !!nm1, !!nm2, view = F))) )
+      cnf_output <- append(cnf_output, utils::capture.output(suppressMessages(confirm_mapping(df1, !!nm1, !!nm2, view = F))) )
     }
 
   }
