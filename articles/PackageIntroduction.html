@@ -103,7 +103,7 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://harrison4192.github.io/validata">validata</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://harrison4192.github.io/validata/">validata</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyselect.r-lib.org">tidyselect</a></span><span class="op">)</span></code></pre></div>
 <div id="distinct" class="section level1">
 <h1 class="hasAnchor">
@@ -197,8 +197,8 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample_data1</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/determine_distinct.html">determine_distinct</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">matches</a></span><span class="op">(</span><span class="st">"ID"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-e9eab94482cbf87d332c" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e9eab94482cbf87d332c">{"x":{"data":{"LEVEL 3":"ID_COL1, ID_COL2, ID_COL3","LEVEL 1":["VAL1","VAL2","VAL3"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-eaf10406f701f3991aac" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eaf10406f701f3991aac">{"x":{"data":{"LEVEL 3":"ID_COL1, ID_COL2, ID_COL3","LEVEL 1":["VAL1","VAL2","VAL3"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="mapping" class="section level1">
@@ -226,8 +226,8 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample_data1</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/determine_mapping.html">determine_mapping</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-836c87bb1323dd2bd61f" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-836c87bb1323dd2bd61f">{"x":{"data":{"1 - 1 mapping":["VAL2 and VAL1","VAL3 and VAL1","VAL3 and VAL2"],"1 - many mapping":[],"many - 1 mapping":["VAL1 and ID_COL1","VAL1 and ID_COL2","VAL1 and ID_COL3","VAL2 and ID_COL1","VAL2 and ID_COL2","VAL2 and ID_COL3","VAL3 and ID_COL1","VAL3 and ID_COL2","VAL3 and ID_COL3"],"many - many mapping":["ID_COL2 and ID_COL1","ID_COL3 and ID_COL1","ID_COL3 and ID_COL2"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-591e2e40aa6b5e615dac" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-591e2e40aa6b5e615dac">{"x":{"data":{"1 - 1 mapping":["VAL2 and VAL1","VAL3 and VAL1","VAL3 and VAL2"],"1 - many mapping":[],"many - 1 mapping":["VAL1 and ID_COL1","VAL1 and ID_COL2","VAL1 and ID_COL3","VAL2 and ID_COL1","VAL2 and ID_COL2","VAL2 and ID_COL3","VAL3 and ID_COL1","VAL3 and ID_COL2","VAL3 and ID_COL3"],"many - many mapping":["ID_COL2 and ID_COL1","ID_COL3 and ID_COL1","ID_COL3 and ID_COL2"]},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="overlap" class="section level1">
@@ -237,7 +237,7 @@
 <div id="confirm-overlap" class="section level2">
 <h2 class="hasAnchor">
 <a href="#confirm-overlap" class="anchor"></a>Confirm Overlap</h2>
-<p><code>confirm_overlap</code> is different from the other <code>confirm</code> functions in that it takes 2 vectors as arguments, instead of a data frame. This is to allow the user to test overlap between different dataframes, or arbitrary vectors if necesary.</p>
+<p><code>confirm_overlap</code> is different from the other <code>confirm</code> functions in that it takes 2 vectors as arguments, instead of a data frame. This is to allow the user to test overlap between different dataframes, or arbitrary vectors if necessary</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="fu"><a href="../reference/confirm_overlap.html">confirm_overlap</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Petal.Length</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">iris_overlap</span>
@@ -322,7 +322,7 @@
 </tr>
 </tbody>
 </table>
-<p>Find the elements sahred by both columns</p>
+<p>Find the elements shared by both columns</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris_overlap</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/confirm_overlap.html">co_find_in_both</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
