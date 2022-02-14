@@ -9,7 +9,7 @@ diagnose_numeric(.data, ...)
 \arguments{
 \item{.data}{dataframe}
 
-\item{...}{tidyselect}
+\item{...}{tidyselect. Default: all numeric columns}
 }
 \value{
 dataframe
@@ -22,8 +22,8 @@ value in the column (chooses at random in case of tie) , and \code{mode_ratio} r
 }
 \examples{
 
-library(framecleaner)
 
 iris \%>\%
-diagnose_numeric
+diagnose_numeric() \%>\%
+print(width = Inf)
 }

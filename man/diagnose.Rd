@@ -15,7 +15,11 @@ diagnose(df, ...)
 dataframe summary
 }
 \description{
-this function is inspired by the excellent \code{dlookr} package. It takes a dataframe and returns
+Pipe in a dataframe to return a diagnosis of its missing and unique values for each columns.
+Default behavior is to diagnose all columns, but a subset can be specified in the dots with tidyselect.
+}
+\details{
+this function is inspired by the excellent \href{https://choonghyunryu.github.io/dlookr/}{dlookr} package. It takes a dataframe and returns
 a summary of unique and missing values of the columns.
 }
 \examples{

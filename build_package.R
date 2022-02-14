@@ -54,6 +54,7 @@ usethis::use_r("select_otherwise")
 
 
 usethis::use_r("confirm_strlength")
+usethis::use_vignette("validata")
 # edit R profile ----------------------------------------------------------
 
 
@@ -64,7 +65,7 @@ remotes::install_github()
 
 use_readme_rmd()
 use_news_md()
-use_mit_license()
+usethis::use_mit_license()
 
 
 
@@ -79,7 +80,8 @@ use_github_actions_badge()
 
 # set github token --------------------------------------------------------
 
-# gh_token_help()
+gh_token_help()
+git_credential_update()
 create_github_token()
 gitcreds_set()
 gitcreds_get()
@@ -87,7 +89,8 @@ set_github_pat()
 credentials::git_credential_forget()
 gh::gh_whoami()
 gh_token()
-
+git_sitrep()
+use_github_release()
 credentials::credential_helper_get()
 git_credential_ask()
 # git config --global credential.helper osxkeychain
@@ -106,13 +109,14 @@ usethis::use_github_pages()
 # build and check ---------------------------------------------------------
 
 devtools::document()
-devtools::build_readme()
+hdevtools::build_readme()
 devtools::build_site()
 devtools::check()
  preview_site()
 load_all()
 devtools::build_vignettes()
 
+usethis::use_release_issue(version = 0.10)
 
 devtools::spell_check()
 devtools::release(check = T)

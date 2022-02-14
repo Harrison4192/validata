@@ -15,4 +15,3 @@ an integer; number of dupe rows
 \description{
 n_dupes
 }
-\keyword{internal}

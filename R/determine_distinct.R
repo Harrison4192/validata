@@ -1,11 +1,11 @@
 
 #' Names List
 #'
+#' @noRd
 #' @param df a df
 #' @param len how many elements in combination
 #'
 #' @return a list of name combinations
-#' @keywords internal
 #'
 names_list <- function(df, len){
 
@@ -18,11 +18,11 @@ names_list <- function(df, len){
 
 #' Make Distinct
 #'
+#' @noRd
 #' @param df a df
 #' @param ... cols
 #'
 #' @return a list of name lists
-#' @keywords internal
 #'
 make_distincts <- function(df, ...){
 

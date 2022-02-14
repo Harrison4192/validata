@@ -3,7 +3,6 @@
 #' @param x a df
 #'
 #' @return an integer; number of dupe rows
-#' @keywords internal
 #'
 n_dupes <- function(x){(x %>% nrow) - (dplyr::distinct(x) %>% nrow) -> dupes ;dupes}
 

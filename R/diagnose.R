@@ -2,7 +2,11 @@
 
 #' diagnose
 #'
-#' this function is inspired by the excellent `dlookr` package. It takes a dataframe and returns
+#' Pipe in a dataframe to return a diagnosis of its missing and unique values for each columns.
+#' Default behavior is to diagnose all columns, but a subset can be specified in the dots with tidyselect.
+#'
+#' @details
+#' this function is inspired by the excellent \href{https://choonghyunryu.github.io/dlookr/}{dlookr} package. It takes a dataframe and returns
 #' a summary of unique and missing values of the columns.
 #'
 #' @param df dataframe
@@ -151,7 +155,7 @@ diagnose_category <- function(.data, ..., max_distinct = 5){
 
   .data %>%
     purrr::map_int(dplyr::n_distinct) %>%
-    subset(. < max_distinct) %>%
+    subset(. <= max_distinct) %>%
     names() -> nms
 
   .data %>%
@@ -203,7 +207,7 @@ data_mode <- function(x, prop = TRUE){
 #' value in the column (chooses at random in case of tie) , and `mode_ratio` returns its frequency as a ratio of the total rows
 #'
 #' @param .data dataframe
-#' @param ... tidyselect
+#' @param ... tidyselect. Default: all numeric columns
 #'
 #' @return dataframe
 #' @export
@@ -211,14 +215,14 @@ data_mode <- function(x, prop = TRUE){
 #'
 #' @examples
 #'
-#' library(framecleaner)
 #'
 #' iris %>%
-#' diagnose_numeric
+#' diagnose_numeric() %>%
+#' print(width = Inf)
 diagnose_numeric <- function(.data, ...){
 
   .data %>%
-    select_otherwise(..., where(is.numeric), return_type = "df") -> df
+    framecleaner::select_otherwise(..., where(is.numeric), return_type = "df") -> df
 
 fns <-   list(zeros = ~sum(. == 0, na.rm = T),
        minus = ~sum(. < 0, na.rm = T),
@@ -234,6 +238,8 @@ fns <-   list(zeros = ~sum(. == 0, na.rm = T),
 
 col_list <- list()
 
+suppressWarnings({
+
    for(fun in seq_along(fns)){
      purrr::map_dbl(df, fns[[fun]]) %>%
        tibble::enframe(name = NULL, value  = names(fns[fun])) -> alist
@@ -241,6 +247,7 @@ col_list <- list()
     rlist::list.append(col_list, alist) -> col_list
 
    }
+})
 
 message(stringr::str_c(nrow(.data), " rows"))
 

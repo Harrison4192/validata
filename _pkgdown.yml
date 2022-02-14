@@ -1,5 +1,6 @@
 template:
   params:
+    bootstrap: 5
     bootswatch: cosmo
     ganalytics: G-LFDZRQX9JJ
 
@@ -32,10 +33,7 @@ reference:
   - 'diagnose_numeric'
   - 'view_missing'
 
-articles:
-- title: All vignettes
-  desc: null
-  contents: '`PackageIntroduction`'
+
 navbar:
   structure:
     left:
@@ -58,10 +56,6 @@ navbar:
     reference:
       text: Reference
       href: reference/index.html
-    articles:
-      text: Articles
-      menu:
-      - text: PackageIntroduction
-        href: articles/PackageIntroduction.html
+
 
 
