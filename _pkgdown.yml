@@ -32,6 +32,9 @@ reference:
   - 'diagnose_category'
   - 'diagnose_numeric'
   - 'view_missing'
+- title: misc
+  contents:
+  - 'n_dupes'
 
 
 navbar:

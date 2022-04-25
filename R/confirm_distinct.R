@@ -24,7 +24,7 @@ confirm_distinct <- function(.data, ...) {
 
   .data %>%
     dplyr::ungroup() %>%
-    select_otherwise(..., return_type = "df") -> .data1
+    select_otherwise(..., otherwise = tidyselect::everything(), return_type = "df") -> .data1
 
   .data1 %>% names() %>% rlang::syms(.) -> cols
 

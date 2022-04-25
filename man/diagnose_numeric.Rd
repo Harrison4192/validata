@@ -15,7 +15,7 @@ diagnose_numeric(.data, ...)
 dataframe
 }
 \description{
-Inputs a dataframe and returns various summary statistics of the numeric columns. For example \code{zeros} returns the number
+Inputs a dataframe and returns various summary statistics of the numeric columns. For example \code{zeros} returns the ratio
 of 0 values in that column. \code{minus} counts negative values and \code{infs} counts Inf values. Other rarer metrics
 are also returned that may be helpful for quick diagnosis or understanding of numeric data. \code{mode} returns the most common
 value in the column (chooses at random in case of tie) , and \code{mode_ratio} returns its frequency as a ratio of the total rows

@@ -9,6 +9,9 @@ p_load(rstudioapi, devtools, roxygen2, usethis, pkgdown,
        ymlthis, magrittr, fs, covr, gitcreds, credentials,
        badger, hexSticker, gh, xfun)
 
+# install.packages("devtools")
+devtools::install_github("Harrison4192/presenter")
+
 
 # add this file to .Rbuildignore ------------------------------------------
 

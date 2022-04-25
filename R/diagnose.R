@@ -201,7 +201,7 @@ data_mode <- function(x, prop = TRUE){
 
 #' diagnose_numeric
 #'
-#' Inputs a dataframe and returns various summary statistics of the numeric columns. For example `zeros` returns the number
+#' Inputs a dataframe and returns various summary statistics of the numeric columns. For example `zeros` returns the ratio
 #' of 0 values in that column. `minus` counts negative values and `infs` counts Inf values. Other rarer metrics
 #' are also returned that may be helpful for quick diagnosis or understanding of numeric data. `mode` returns the most common
 #' value in the column (chooses at random in case of tie) , and `mode_ratio` returns its frequency as a ratio of the total rows
@@ -222,15 +222,15 @@ data_mode <- function(x, prop = TRUE){
 diagnose_numeric <- function(.data, ...){
 
   .data %>%
-    framecleaner::select_otherwise(..., where(is.numeric), return_type = "df") -> df
+    framecleaner::select_otherwise(..., otherwise = where(is.numeric), return_type = "df") -> df
 
-fns <-   list(zeros = ~sum(. == 0, na.rm = T),
-       minus = ~sum(. < 0, na.rm = T),
-       infs = ~sum(is.infinite(.), na.rm = T),
-       min = ~min(., na.rm = T),
-       mean = ~mean(., na.rm = T),
-       max = ~max(., na.rm = T),
-       `|x|<1 (ratio)` = ~mean( -1 < . & . < 1, na.rm =T)  ,
+fns <-   list(zeros = ~mean(. == 0, na.rm = T),
+       minus = ~mean(. < 0, na.rm = T),
+       infs = ~mean(is.infinite(.), na.rm = T),
+       min = ~mean(framecleaner::filter_missing(.), na.rm = T),
+       mean = ~mean(framecleaner::filter_missing(.), na.rm = T),
+       max = ~max(framecleaner::filter_missing(.), na.rm = T),
+       `|x|<=1 (ratio)` = ~mean( -1 <= . & . <= 1, na.rm =T)  ,
        integer_ratio = ~mean(as.integer(.) == ., na.rm =T),
        mode = ~as.double(names(data_mode(.))),
        mode_ratio = data_mode)
@@ -257,6 +257,11 @@ tibble::tibble(variables = names(df)) %>%
     rlist::list.cbind(col_list)
   ) %>%
   framecleaner::set_int()
+# %>%
+  # presenter::format_percent(tidyselect::any_of(c("zeros", "minus", "infs",
+  #                                                "|x|<=1 (ratio)", "mode_ratio",
+  #                                                "integer_ratio")))
+
 
 
 }
