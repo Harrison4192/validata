@@ -227,7 +227,7 @@ diagnose_numeric <- function(.data, ...){
 fns <-   list(zeros = ~mean(. == 0, na.rm = T),
        minus = ~mean(. < 0, na.rm = T),
        infs = ~mean(is.infinite(.), na.rm = T),
-       min = ~mean(framecleaner::filter_missing(.), na.rm = T),
+       min = ~min(framecleaner::filter_missing(.), na.rm = T),
        mean = ~mean(framecleaner::filter_missing(.), na.rm = T),
        max = ~max(framecleaner::filter_missing(.), na.rm = T),
        `|x|<=1 (ratio)` = ~mean( -1 <= . & . <= 1, na.rm =T)  ,
@@ -257,6 +257,7 @@ tibble::tibble(variables = names(df)) %>%
     rlist::list.cbind(col_list)
   ) %>%
   framecleaner::set_int()
+
 # %>%
   # presenter::format_percent(tidyselect::any_of(c("zeros", "minus", "infs",
   #                                                "|x|<=1 (ratio)", "mode_ratio",
