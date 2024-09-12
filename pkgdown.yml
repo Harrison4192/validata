@@ -1,7 +1,6 @@
-pandoc: 2.14.2
-pkgdown: 2.0.6
+pandoc: 3.1.11
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   validata: validata.html
-last_built: 2022-08-19T07:19Z
-
+last_built: 2024-09-12T07:02Z

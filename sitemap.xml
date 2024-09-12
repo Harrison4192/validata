@@ -1,84 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/validata.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/confirm_distinct.html</loc>
-  </url>
-  <url>
-    <loc>/reference/confirm_mapping.html</loc>
-  </url>
-  <url>
-    <loc>/reference/confirm_overlap.html</loc>
-  </url>
-  <url>
-    <loc>/reference/confirm_overlap_internal.html</loc>
-  </url>
-  <url>
-    <loc>/reference/confirm_strlen.html</loc>
-  </url>
-  <url>
-    <loc>/reference/data_mode.html</loc>
-  </url>
-  <url>
-    <loc>/reference/determine_distinct.html</loc>
-  </url>
-  <url>
-    <loc>/reference/determine_mapping.html</loc>
-  </url>
-  <url>
-    <loc>/reference/determine_overlap.html</loc>
-  </url>
-  <url>
-    <loc>/reference/diagnose.html</loc>
-  </url>
-  <url>
-    <loc>/reference/diagnose_category.html</loc>
-  </url>
-  <url>
-    <loc>/reference/diagnose_missing.html</loc>
-  </url>
-  <url>
-    <loc>/reference/diagnose_numeric.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/n_dupes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>/reference/sample_data1.html</loc>
-  </url>
-  <url>
-    <loc>/reference/validata-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/view_missing.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/validata.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/confirm_distinct.html</loc></url>
+<url><loc>/reference/confirm_mapping.html</loc></url>
+<url><loc>/reference/confirm_overlap.html</loc></url>
+<url><loc>/reference/confirm_overlap_internal.html</loc></url>
+<url><loc>/reference/confirm_strlen.html</loc></url>
+<url><loc>/reference/data_mode.html</loc></url>
+<url><loc>/reference/determine_distinct.html</loc></url>
+<url><loc>/reference/determine_mapping.html</loc></url>
+<url><loc>/reference/determine_overlap.html</loc></url>
+<url><loc>/reference/diagnose.html</loc></url>
+<url><loc>/reference/diagnose_category.html</loc></url>
+<url><loc>/reference/diagnose_missing.html</loc></url>
+<url><loc>/reference/diagnose_numeric.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/n_dupes.html</loc></url>
+<url><loc>/reference/pipe.html</loc></url>
+<url><loc>/reference/sample_data1.html</loc></url>
+<url><loc>/reference/validata-package.html</loc></url>
+<url><loc>/reference/view_missing.html</loc></url>
 </urlset>
+
