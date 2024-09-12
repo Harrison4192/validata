@@ -214,6 +214,7 @@ data_mode <- function(x, prop = TRUE){
 #'
 #'
 #' @examples
+#' @export
 #'
 #'
 #' iris %>%
@@ -224,16 +225,17 @@ diagnose_numeric <- function(.data, ...){
   .data %>%
     framecleaner::select_otherwise(..., otherwise = where(is.numeric), return_type = "df") -> df
 
-fns <-   list(zeros = ~mean(. == 0, na.rm = T),
-       minus = ~mean(. < 0, na.rm = T),
-       infs = ~mean(is.infinite(.), na.rm = T),
+
+fns <-   list(
+  zeros = function(x) stringr::str_c(sum(x == 0, na.rm = T), " ", "(",  ((mean(x == 0, na.rm = T) * 100 )%>% round()) %>% str_c("%"), ")"),
+  minus = function(x) stringr::str_c(sum(x < 0, na.rm = T), " ", "(",  ((mean(x < 0, na.rm = T) * 100) %>% round()) %>% str_c("%"), ")"),
+  infs = function(x) stringr::str_c(sum(is.infinite(x), na.rm = T), " ", "(",  ((mean(is.infinite(x), na.rm = T) * 100) %>% round()) %>% str_c("%"), ")"),
        min = ~min(framecleaner::filter_missing(.), na.rm = T),
        mean = ~mean(framecleaner::filter_missing(.), na.rm = T),
        max = ~max(framecleaner::filter_missing(.), na.rm = T),
-       `|x|<=1 (ratio)` = ~mean( -1 <= . & . <= 1, na.rm =T)  ,
-       integer_ratio = ~mean(as.integer(.) == ., na.rm =T),
-       mode = ~as.double(names(data_mode(.))),
-       mode_ratio = data_mode)
+       `|x|<=1 (ratio)` = function(x) stringr::str_c(sum(-1 <= x & x <= 1, na.rm = T), " ", "(",  ((mean( -1 <= x & x <= 1, na.rm =T) * 100) %>% round()) %>% str_c("%"), ")"),
+       integer_ratio = function(x) stringr::str_c(sum(as.integer(x) == x, na.rm = T), " ", "(",  ((mean(as.integer(x) == x, na.rm =T) * 100) %>% round()) %>% str_c("%"), ")" ),
+       mode = ~mode_pct(.))
 
 
 col_list <- list()
@@ -241,7 +243,7 @@ col_list <- list()
 suppressWarnings({
 
    for(fun in seq_along(fns)){
-     purrr::map_dbl(df, fns[[fun]]) %>%
+     purrr::map_chr(.x = df, .f = fns[[fun]]) %>%
        tibble::enframe(name = NULL, value  = names(fns[fun])) -> alist
 
     rlist::list.append(col_list, alist) -> col_list
@@ -256,7 +258,7 @@ tibble::tibble(variables = names(df)) %>%
   dplyr::bind_cols(
     rlist::list.cbind(col_list)
   ) %>%
-  framecleaner::set_int()
+  framecleaner::set_int(min, max, mean)
 
 # %>%
   # presenter::format_percent(tidyselect::any_of(c("zeros", "minus", "infs",
@@ -266,4 +268,5 @@ tibble::tibble(variables = names(df)) %>%
 
 
 }
+
 

@@ -56,7 +56,7 @@ usethis::use_r("possibly_id_col")
 usethis::use_r("select_otherwise")
 
 
-usethis::use_r("confirm_strlength")
+usethis::use_r("mode")
 usethis::use_vignette("validata")
 # edit R profile ----------------------------------------------------------
 
