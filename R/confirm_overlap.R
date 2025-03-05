@@ -44,6 +44,8 @@ confirm_overlap <- function(vec1, vec2, return_tibble = F){
   db1 <- tibble::tibble(x = vec1)
   db2 <- tibble::tibble(x = vec2)
 
+  min_unique <- min(dplyr::n_distinct(vec1), dplyr::n_distinct(vec2))
+
 
   db1 %>% dplyr::distinct(x) %>% dplyr::filter(!is.na(x)) %>% dplyr::mutate(flag1 = 1) -> db1
   db2 %>% dplyr::distinct(x) %>% dplyr::filter(!is.na(x)) %>% dplyr::mutate(flag2 = 1) -> db2
@@ -62,7 +64,7 @@ confirm_overlap <- function(vec1, vec2, return_tibble = F){
       !!nm_col2 := sum(flag1 == 0 & flag2 == 1),
       shared_names = sum(both_flags == 2),
       total_names = jdb %>% nrow,
-      pct_shared = scales::percent(shared_names/ total_names)) -> jdb_sum
+      pct_shared = scales::percent(shared_names/ min_unique)) -> jdb_sum
 
 
 
