@@ -19,8 +19,5 @@ faster than diagnose if emphasis is on diagnosing missing values. Also, only sho
 any missing values.
 }
 \examples{
-
-iris \%>\%
-framecleaner::make_na(Species, vec = "setosa") \%>\%
-diagnose_missing()
+diagnose_missing(tibble::tibble(x = c(NA, 1)))
 }

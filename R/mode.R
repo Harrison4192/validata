@@ -49,15 +49,16 @@ mode_fn <- function(x) {
 top_n_vals <- function(x, top_n = 3){
 
   tibble::tibble(x = x) -> t1
+  n <- NULL
 
   t1 %>%
     dplyr::add_count(x) %>%
-    dplyr::arrange(desc(n)) %>%
+    dplyr::arrange(dplyr::desc(n)) %>%
     dplyr::distinct(n, .keep_all = T) %>%
     dplyr::slice(1:top_n) %>%
     dplyr::pull(x) -> x1
-  purrr::map_chr(x1, .f = ~calc_pct(vec = t1$x, value = .)) %>%
-    stringr::str_c(collapse = ", ")
+  purrr::map(x1, .f = ~calc_pct(vec = t1$x, value = .))%>%
+    unlist %>% stringr::str_c(collapse = " | ")
 }
 
 
@@ -65,19 +66,11 @@ top_n_vals <- function(x, top_n = 3){
 
 calc_pct <- function(vec, value ){
   mean(vec == value, na.rm = T) -> avg1
-  (avg1 * 100) %>% round() %>% str_c("%") -> pct
+  (avg1 * 100) %>% round() %>% stringr::str_c("%") -> pct
 
   stringr::str_c(value, " ", "(", pct, ")")
 }
 
-calc_pct1 <- function(vec, num, avg1 ){
-
-  mean(cond, na.rm = T) -> avg1
-  sum(cond, na.rm = T) -> sum1
-  (avg1 * 100) %>% round() %>% str_c("%") -> pct
-
-  stringr::str_c(num, " ", "(", pct, ")")
-}
 
 
 

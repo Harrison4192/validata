@@ -21,7 +21,5 @@ counts the distinct entries of categorical variables. The \code{max_distinct} ar
 categorical variables with a maximum number of unique entries, to prevent overflow.
 }
 \examples{
-
-iris \%>\%
-diagnose_category()
+diagnose_category(iris)
 }

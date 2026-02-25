@@ -22,8 +22,5 @@ by default, detects missings in any column. The result is by default displayed i
 Can be returned as a tibble optionally.
 }
 \examples{
-
-iris \%>\%
-framecleaner::make_na(Species, vec = "setosa") \%>\%
-view_missing(view = FALSE)
+view_missing(tibble::tibble(x = c(NA, 1)), view = FALSE)
 }

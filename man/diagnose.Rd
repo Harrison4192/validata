@@ -23,5 +23,6 @@ this function is inspired by the excellent \href{https://choonghyunryu.github.io
 a summary of unique and missing values of the columns.
 }
 \examples{
-iris \%>\% diagnose()
+diagnose(iris)
+
 }

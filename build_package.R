@@ -108,18 +108,18 @@ usethis::use_github_action("pkgdown")
 usethis::use_github_actions()
 usethis::use_github_links()
 usethis::use_github_pages()
-
+usethis::use_version("patch")
 # build and check ---------------------------------------------------------
 
 devtools::document()
-hdevtools::build_readme()
+devtools::build_readme()
 devtools::build_site()
-devtools::check()
- preview_site()
+devtools::check(cran = TRUE)
+preview_site()
 load_all()
 devtools::build_vignettes()
 
-usethis::use_release_issue(version = 0.10)
+usethis::use_release_issue(version = 0.11)
 
 devtools::spell_check()
 devtools::release(check = T)

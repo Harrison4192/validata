@@ -21,8 +21,6 @@ are also returned that may be helpful for quick diagnosis or understanding of nu
 value in the column (chooses at random in case of tie) , and \code{mode_ratio} returns its frequency as a ratio of the total rows
 }
 \examples{
-
-
 iris \%>\%
 diagnose_numeric() \%>\%
 print(width = Inf)

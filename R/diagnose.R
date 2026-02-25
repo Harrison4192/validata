@@ -16,7 +16,8 @@
 #' @return dataframe summary
 #' @export
 #'
-#' @examples iris %>% diagnose()
+#' @examples diagnose(iris)
+#'
 diagnose <- function(df, ...) {
 
   df <- select_otherwise(df, ..., otherwise = tidyselect::everything(), return_type = "df")
@@ -60,11 +61,7 @@ count_missing <- function(x){
 #' @return tibble summary
 #' @export
 #'
-#' @examples
-#'
-#' iris %>%
-#' framecleaner::make_na(Species, vec = "setosa") %>%
-#' diagnose_missing()
+#' @examples diagnose_missing(tibble::tibble(x = c(NA, 1)))
 diagnose_missing <- function(df, ...){
 
   missings <- NULL
@@ -111,11 +108,7 @@ if(misscond){
 #' @return tibble
 #' @export
 #'
-#' @examples
-#'
-#' iris %>%
-#' framecleaner::make_na(Species, vec = "setosa") %>%
-#' view_missing(view = FALSE)
+#' @examples view_missing(tibble::tibble(x = c(NA, 1)), view = FALSE)
 view_missing <- function(df, ..., view = TRUE){
 
   df %>% select_otherwise(..., otherwise = tidyselect::everything()) -> col_indx
@@ -144,10 +137,7 @@ view_missing <- function(df, ..., view = TRUE){
 #' @return dataframe
 #' @export
 #'
-#' @examples
-#'
-#' iris %>%
-#' diagnose_category()
+#' @examples diagnose_category(iris)
 diagnose_category <- function(.data, ..., max_distinct = 5){
   n <-  NULL
 
@@ -211,12 +201,8 @@ data_mode <- function(x, prop = TRUE){
 #'
 #' @return dataframe
 #' @export
-#'
-#'
+
 #' @examples
-#' @export
-#'
-#'
 #' iris %>%
 #' diagnose_numeric() %>%
 #' print(width = Inf)
@@ -227,14 +213,14 @@ diagnose_numeric <- function(.data, ...){
 
 
 fns <-   list(
-  zeros = function(x) stringr::str_c(sum(x == 0, na.rm = T), " ", "(",  ((mean(x == 0, na.rm = T) * 100 )%>% round()) %>% str_c("%"), ")"),
-  minus = function(x) stringr::str_c(sum(x < 0, na.rm = T), " ", "(",  ((mean(x < 0, na.rm = T) * 100) %>% round()) %>% str_c("%"), ")"),
-  infs = function(x) stringr::str_c(sum(is.infinite(x), na.rm = T), " ", "(",  ((mean(is.infinite(x), na.rm = T) * 100) %>% round()) %>% str_c("%"), ")"),
+  zeros = function(x) stringr::str_c(sum(x == 0, na.rm = T), " ", "(",  ((mean(x == 0, na.rm = T) * 100 )%>% round()) %>% stringr::str_c("%"), ")"),
+  minus = function(x) stringr::str_c(sum(x < 0, na.rm = T), " ", "(",  ((mean(x < 0, na.rm = T) * 100) %>% round()) %>% stringr::str_c("%"), ")"),
+  infs = function(x) stringr::str_c(sum(is.infinite(x), na.rm = T), " ", "(",  ((mean(is.infinite(x), na.rm = T) * 100) %>% round()) %>% stringr::str_c("%"), ")"),
        min = ~min(framecleaner::filter_missing(.), na.rm = T),
        mean = ~mean(framecleaner::filter_missing(.), na.rm = T),
        max = ~max(framecleaner::filter_missing(.), na.rm = T),
-       `|x|<=1 (ratio)` = function(x) stringr::str_c(sum(-1 <= x & x <= 1, na.rm = T), " ", "(",  ((mean( -1 <= x & x <= 1, na.rm =T) * 100) %>% round()) %>% str_c("%"), ")"),
-       integer_ratio = function(x) stringr::str_c(sum(as.integer(x) == x, na.rm = T), " ", "(",  ((mean(as.integer(x) == x, na.rm =T) * 100) %>% round()) %>% str_c("%"), ")" ),
+       `|x|<=1 (ratio)` = function(x) stringr::str_c(sum(-1 <= x & x <= 1, na.rm = T), " ", "(",  ((mean( -1 <= x & x <= 1, na.rm =T) * 100) %>% round()) %>% stringr::str_c("%"), ")"),
+       integer_ratio = function(x) stringr::str_c(sum(as.integer(x) == x, na.rm = T), " ", "(",  ((mean(as.integer(x) == x, na.rm =T) * 100) %>% round()) %>% stringr::str_c("%"), ")" ),
        mode = ~mode_pct(.))
 
 
@@ -243,7 +229,7 @@ col_list <- list()
 suppressWarnings({
 
    for(fun in seq_along(fns)){
-     purrr::map_chr(.x = df, .f = fns[[fun]]) %>%
+     purrr::map(.x = df, .f = fns[[fun]]) %>%
        tibble::enframe(name = NULL, value  = names(fns[fun])) -> alist
 
     rlist::list.append(col_list, alist) -> col_list
@@ -258,6 +244,7 @@ tibble::tibble(variables = names(df)) %>%
   dplyr::bind_cols(
     rlist::list.cbind(col_list)
   ) %>%
+  framecleaner::set_chr(dplyr::everything()) %>%
   framecleaner::set_int(min, max, mean)
 
 # %>%
